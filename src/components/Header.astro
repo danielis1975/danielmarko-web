@@ -1,0 +1,45 @@
+---
+import { t, localizePath, defaultLang, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+  basePath: string;
+}
+
+const { lang, basePath } = Astro.props;
+const tr = t(lang);
+
+const otherLang: Lang = lang === "sk" ? "en" : "sk";
+const home = localizePath("/", lang);
+---
+
+<header
+  class="sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-black/5"
+>
+  <nav
+    class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-4"
+  >
+    <a href={home} class="font-extrabold tracking-tight text-lg">
+      Daniel<span style="color:var(--color-accent)">Marko</span>
+    </a>
+
+    <div class="flex items-center gap-5 text-sm font-medium">
+      <a href={`${home}#projects`} class="hover:text-accent transition-colors"
+        >{tr("nav.projects")}</a
+      >
+      <a href={`${home}#about`} class="hover:text-accent transition-colors"
+        >{tr("nav.about")}</a
+      >
+      <a href={`${home}#contact`} class="hover:text-accent transition-colors"
+        >{tr("nav.contact")}</a
+      >
+      <a
+        href={localizePath(basePath, otherLang)}
+        class="px-2.5 py-1 rounded-full border border-black/10 text-xs uppercase tracking-wide hover:border-accent hover:text-accent transition-colors"
+        aria-label={`Switch to ${otherLang}`}
+      >
+        {otherLang}
+      </a>
+    </div>
+  </nav>
+</header>

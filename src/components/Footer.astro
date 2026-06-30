@@ -1,0 +1,29 @@
+---
+import { t, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const tr = t(lang);
+const year = 2026;
+---
+
+<footer class="border-t border-black/5 mt-24">
+  <div
+    class="max-w-5xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted"
+  >
+    <p>© {year} Daniel Marko. {tr("footer.rights")}</p>
+    <div class="flex items-center gap-5">
+      <a
+        href="mailto:dano.marko@gmail.com"
+        class="hover:text-accent transition-colors">Email</a
+      >
+      <a
+        href="https://github.com/danielis1975"
+        class="hover:text-accent transition-colors"
+        rel="noopener">GitHub</a
+      >
+    </div>
+  </div>
+</footer>
