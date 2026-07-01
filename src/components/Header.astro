@@ -27,7 +27,15 @@ const home = localizePath("/", lang);
       <a href={`${home}#projects`} class="hover:text-accent transition-colors"
         >{tr("nav.projects")}</a
       >
-      <a href={`${home}#about`} class="hover:text-accent transition-colors"
+      <a
+        href={localizePath("/mini-course", lang)}
+        class="font-semibold transition-colors hover:text-accent"
+        style="color:var(--color-accent)"
+        >{lang === "sk" ? "Kurz zdarma" : "Free course"}</a
+      >
+      <a
+        href={`${home}#about`}
+        class="hidden hover:text-accent transition-colors sm:inline"
         >{tr("nav.about")}</a
       >
       <a href={`${home}#contact`} class="hover:text-accent transition-colors"

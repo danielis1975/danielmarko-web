@@ -1,0 +1,107 @@
+---
+import { lessons, channelUrl, pick } from "../data/minicourse";
+import HeroVideo from "./HeroVideo.astro";
+import { localizePath, type Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const g = ["#3aa0e0", "#1f7fc4"];
+---
+
+<!-- HERO -->
+<section class="grain relative overflow-hidden border-b border-line">
+  <div class="aurora" aria-hidden="true">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+  </div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 pb-14 pt-16 text-center">
+    <span
+      class="inline-block rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white"
+      style={`background:linear-gradient(140deg, ${g[0]}, ${g[1]})`}
+      >{lang === "sk" ? "Zadarmo · 8 lekcií" : "Free · 8 lessons"}</span
+    >
+    <h1 class="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-6xl">
+      The Awakening to Vitality
+    </h1>
+    <p class="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted">
+      {
+        lang === "sk"
+          ? "Bezplatný longevity mini-kurz od Daniela Marka — 8 krátkych lekcií o vede starnutia, pohybe, výžive, suplementoch, regenerácii a disciplíne."
+          : "A free longevity mini-course by Daniel Marko — 8 short lessons on the science of aging, movement, nutrition, supplements, regeneration and discipline."
+      }
+    </p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="#lessons" class="btn btn-dark"
+        >{lang === "sk" ? "Spustiť kurz" : "Start the course"} ↓</a
+      >
+      <a href={channelUrl} target="_blank" rel="noopener" class="btn btn-light"
+        >YouTube ↗</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS -->
+<section id="lessons" class="mx-auto max-w-4xl scroll-mt-20 px-5 py-16">
+  <div class="space-y-14">
+    {
+      lessons.map((l) => (
+        <div>
+          <div class="mb-4 flex items-center gap-3">
+            <span
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-display text-lg font-semibold text-white"
+              style={`background:linear-gradient(140deg, ${g[0]}, ${g[1]})`}
+            >
+              {l.n}
+            </span>
+            <div>
+              <h2 class="font-display text-xl font-semibold leading-tight tracking-tight">
+                {pick(l.title, lang)}
+              </h2>
+              <p class="text-sm text-muted">{pick(l.desc, lang)}</p>
+            </div>
+          </div>
+          <HeroVideo id={l.id} title={pick(l.title, lang)} />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<!-- OUTRO CTA -->
+<section class="border-t border-line bg-card">
+  <div class="mx-auto max-w-5xl px-5 py-14">
+    <div
+      class="panel-dark grain relative overflow-hidden rounded-[2rem] px-8 py-12 text-center sm:px-14"
+    >
+      <div class="relative z-10">
+        <h2
+          class="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+          style="color:#fff"
+        >
+          {
+            lang === "sk"
+              ? "Chceš ísť ďalej než mini-kurz?"
+              : "Want to go beyond the mini-course?"
+          }
+        </h2>
+        <p class="on-dark-muted mx-auto mt-3 max-w-xl">
+          {
+            lang === "sk"
+              ? "Newagy premieňa tieto princípy na personalizovaný AI plán pre tvoju dlhovekosť."
+              : "Newagy turns these principles into a personalized AI plan for your longevity."
+          }
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center gap-3">
+          <a href="https://newagy.com" target="_blank" rel="noopener" class="btn btn-light"
+            >Newagy ↗</a
+          >
+          <a href={localizePath("/wellness", lang)} class="btn btn-light"
+            >Wellness Warriors →</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
