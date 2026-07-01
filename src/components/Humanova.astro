@@ -1,0 +1,335 @@
+---
+import { Image } from "astro:assets";
+import { localizePath, type Lang } from "../i18n";
+import hero from "../assets/projects/humanova.webp";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const sk = lang === "sk";
+const T = (en: string, s: string) => (sk ? s : en);
+const g = ["#10b981", "#0369a1"];
+
+const needs = [
+  T("safety", "bezpečie"),
+  T("a meaningful role", "zmysluplnú úlohu"),
+  T("community", "komunitu"),
+  T("recognition", "uznanie"),
+  T("room to grow", "možnosť rásť"),
+  T("to feel needed", "pocit, že sú potrební"),
+  T("real influence on their environment", "reálny vplyv na svoje prostredie"),
+];
+
+const servicesNotCash = [
+  T("Community energy instead of energy poverty", "Komunitná energetika namiesto energetickej chudoby"),
+  T("Local food hubs instead of total dependence on global chains", "Lokálne potravinové uzly namiesto závislosti od globálnych reťazcov"),
+  T("Renovations & modular housing instead of chronic housing shortage", "Renovácie a modulárne bývanie namiesto chronickej bytovej núdze"),
+  T("Community care instead of isolation", "Komunitná starostlivosť namiesto izolácie"),
+  T("Reskilling & mentoring instead of passive unemployment", "Reskilling a mentoring namiesto pasívnej nezamestnanosti"),
+];
+
+const ledger = [
+  { k: "EKO", t: T("Human-contribution credit — one hour of standardized contribution (care, mentoring, teaching, logistics, repairs, coordination…).", "Kredit ľudského príspevku — jedna hodina štandardizovaného príspevku (opatera, mentoring, učenie, logistika, opravy, koordinácia…).") },
+  { k: "SVC", t: T("Units of real services & capacity — energy, heat, food, water, housing, transport, repairs, care. Created only where verified capacity exists.", "Jednotky reálnych služieb a kapacít — energia, teplo, jedlo, voda, bývanie, doprava, opravy, starostlivosť. Vzniká len tam, kde je overená kapacita.") },
+  { k: "CRED", t: T("Compute capacity — the digital layer: planning, coordination, education, audit and optimization. A systemic capacity, not a personal benefit.", "Výpočtová kapacita — digitálna vrstva: plánovanie, koordinácia, vzdelávanie, audit a optimalizácia. Systémová kapacita, nie osobný benefit.") },
+  { k: "REP", t: T("Reputation & trust — a non-transferable profile that gates sensitive roles. Grows via reliability and mentoring; never a caste — always allows repair and return.", "Reputácia a dôvera — neprevoditeľný profil pre citlivé úlohy. Rastie cez spoľahlivosť a mentoring; nikdy nie kasta — vždy umožňuje nápravu a návrat.") },
+];
+
+const tiers = [
+  { n: T("1 · Human Minimum", "1 · Human Minimum"), t: T("An unconditional civilizational minimum: basic food, emergency shelter, water, hygiene, warmth in a crisis. Never tied to performance — a humanitarian floor of dignity.", "Nepodmienené civilizačné minimum: základné jedlo, núdzové prístrešie, voda, hygiena, teplo v kríze. Nikdy viazané na výkon — humanitný základ dôstojnosti.") },
+  { n: T("2 · Civic Baseline", "2 · Civic Baseline"), t: T("A base community package for members who participate as they can — physical work, learning, mentoring, care, digital support. Participation, not a hard performance regime.", "Základný komunitný balík pre členov, ktorí sa zapoja podľa možností — práca, učenie, mentoring, care, digitálna podpora. Participácia, nie tvrdý výkon.") },
+  { n: T("3 · Contribution Plus", "3 · Contribution Plus"), t: T("A higher tier of services and options, earned via EKO, reputation and long-term contribution — higher energy limits, better housing, specialized services, a bigger voice.", "Vyššia úroveň služieb a možností cez EKO, reputáciu a dlhodobý príspevok — vyšší energetický limit, lepšie bývanie, špecializované služby, väčší hlas.") },
+];
+
+const levels = [
+  { l: "L0", t: T("Individual & household — profile, EKO account, service access, reputation history.", "Jednotlivec a domácnosť — profil, EKO účet, prístup k službám, reputačná história.") },
+  { l: "L1", t: T("Pod — a small group of 10–30 for onboarding, trust and peer review.", "Pod — malá skupina 10–30 ľudí pre onboarding, dôveru a peer review.") },
+  { l: "L2", t: T("Guilds — thematic teams: housing, energy, food, water, repairs, education, care, audit, logistics.", "Guildy — tematické tímy: bývanie, energia, jedlo, voda, opravy, vzdelávanie, starostlivosť, audit, logistika.") },
+  { l: "L3", t: T("Local cooperative — runs real projects: kitchens, warehouses, workshops, energy hubs, renovations.", "Lokálna kooperatíva — reálne projekty: kuchyne, sklady, dielne, energetické uzly, renovácie.") },
+  { l: "L4", t: T("Regional federation — logistics, certification, bulk buying, training academies.", "Regionálna federácia — logistika, certifikácia, väčšie nákupy, tréningové akadémie.") },
+  { l: "L5", t: T("National union — legislation, standards, audit, compute-tax frameworks, anti-abuse.", "Národná únia — legislatíva, štandardy, audit, compute daňové rámce, ochrana pred zneužitím.") },
+  { l: "L6", t: T("Continental resource commons — resources, strategic materials, recycling, production.", "Kontinentálne resource commons — zdroje, strategické materiály, recyklácia, výroba.") },
+  { l: "L7", t: T("Global interoperability protocol — not a world government; a coordination & clearing standard.", "Globálny protokol interoperability — nie svetová vláda; štandardizačný a zúčtovací rámec.") },
+];
+
+const missions = [
+  T("Housing Resilience", "Housing Resilience"),
+  T("Food Security", "Food Security"),
+  T("Energy Sovereignty", "Energy Sovereignty"),
+  T("Water & Sanitation", "Water & Sanitation"),
+  T("Care & Human Development", "Care & Human Development"),
+  T("Repair, Recycling & Materials", "Repair, Recycling & Materials"),
+  T("Ecological Regeneration", "Ecological Regeneration"),
+];
+
+const partners = [
+  { a: T("For municipalities", "Pre samosprávy"), t: T("Local resilience, less pressure on the social system, and practical results in 6–18 months.", "Lokálna odolnosť, nižší tlak na sociálny systém a praktické výsledky do 6–18 mesiacov.") },
+  { a: T("For AI & datacenter partners", "Pre AI a datacenter partnerov"), t: T("A way to turn part of AI productivity into auditable public benefit, social stability and legitimacy for automation.", "Spôsob, ako premeniť časť AI produktivity na auditovateľný verejný benefit, stabilitu a legitimizáciu automatizácie.") },
+  { a: T("For investors & philanthropy", "Pre investorov a filantropiu"), t: T("It funds assets that reduce future social and economic risks — not just consumption.", "Financuje aktíva, ktoré znižujú budúce sociálne a ekonomické riziká — nie len spotrebu.") },
+  { a: T("For the public", "Pre verejnosť"), t: T("More safety, more belonging, and more meaningful roles as the world of work changes.", "Viac bezpečia, spolupatričnosti a zmysluplných rolí v čase, keď sa svet práce mení.") },
+];
+
+const roadmap = [
+  { p: T("0–3 months", "0–3 mesiace"), t: T("Pilot design: charter, EKO/SVC rules, site selection, digital infrastructure, partners.", "Dizajn pilotu: charta, EKO/SVC pravidlá, výber lokality, digitálna infraštruktúra, partneri.") },
+  { p: T("3–12 months", "3–12 mesiacov"), t: T("First pilot: community kitchen, energy interventions, first renovations, member onboarding, AI task coordination, results dashboard.", "Prvý pilot: komunitná kuchyňa, energetické zásahy, prvé renovácie, onboarding, AI koordinácia úloh, dashboard.") },
+  { p: T("12–36 months", "12–36 mesiacov"), t: T("Regional scaling: more sites, KPI comparison, logistics, workshops, farms, certification & training.", "Regionálne škálovanie: viac lokalít, porovnanie KPI, logistika, dielne, farmy, certifikácia a tréning.") },
+  { p: T("3–7 years", "3–7 rokov"), t: T("National framework: legislative sandboxes, compute tax-credit framework, standards, inter-region clearing.", "Národný rámec: legislatívne sandboxy, compute tax-credit rámec, štandardy, clearing medzi regiónmi.") },
+  { p: T("7–15 years", "7–15 rokov"), t: T("Global protocol: continental resource commons, strategic partnerships, interoperability, a resilient commons network.", "Globálny protokol: kontinentálne resource commons, strategické partnerstvá, interoperabilita, resilient commons network.") },
+];
+---
+
+<!-- HERO -->
+<section class="relative overflow-hidden border-b border-line">
+  <Image
+    src={hero}
+    alt="Humanova Commons"
+    widths={[800, 1500]}
+    sizes="100vw"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0" style="background:linear-gradient(160deg, rgba(3,105,116,.82), rgba(11,12,16,.78))"></div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 pb-16 pt-14 text-white">
+    <a href={localizePath("/", lang)} class="text-sm text-white/70 transition-colors hover:text-white"
+      >← {sk ? "Späť" : "Back"}</a
+    >
+    <div class="mt-8 flex items-center gap-3">
+      <span class="flex h-12 w-12 items-center justify-center rounded-2xl text-2xl"
+        style={`background:linear-gradient(140deg, ${g[0]}, ${g[1]})`}>⬡</span>
+      <span class="rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur"
+        >{sk ? "Vízia · otvorený koncept" : "Vision · open concept"}</span>
+    </div>
+    <h1 class="mt-5 font-display text-5xl font-semibold leading-[1.03] tracking-tight sm:text-6xl">
+      Humanova Commons
+    </h1>
+    <p class="mt-4 max-w-2xl text-xl text-white/90">
+      {sk
+        ? "Civilizačná infraštruktúra pre AI éru — pre odolné komunity."
+        : "AI-era civic infrastructure for resilient communities."}
+    </p>
+    <p class="mt-4 max-w-2xl leading-relaxed text-white/70">
+      {sk
+        ? "Vízia novej spoločenskej infraštruktúry, ktorá premieňa AI kapacitu a ľudský príspevok na reálne služby, lokálnu odolnosť a dôstojné role pre ľudí v čase, keď sa tradičný trh práce mení."
+        : "A vision of new civic infrastructure that turns AI capacity and human contribution into real services, local resilience and dignified roles for people as the traditional labor market changes."}
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="#cta" class="btn btn-light">{sk ? "Zapojiť sa" : "Get involved"} →</a>
+      <a href="mailto:daniel@danielmarko.com" class="btn"
+        style={`background:${g[0]};color:#fff`}>daniel@danielmarko.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="mx-auto max-w-4xl px-5 py-16">
+  <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+    {sk ? "Vízia" : "Vision"}
+  </p>
+  <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+    {sk ? "Služby namiesto hotovosti" : "Services instead of cash"}
+  </h2>
+  <div class="mt-5 space-y-4 text-lg leading-relaxed">
+    <p>{sk
+      ? "Humanova chce premeniť časť globálnej AI kapacity a ľudskej energie na konkrétne služby, ktoré znižujú existenčnú závislosť človeka od peňazí a trhu. Namiesto spoliehania sa len na finančné transfery buduje reálne kapacity — kilowatthodiny, porcie jedla, dostupné bývanie, komunitné kuchyne, lokálne farmy, dielne, vzdelávanie a starostlivosť."
+      : "Humanova turns part of global AI capacity and human energy into concrete services that reduce a person's existential dependence on money and the market. Instead of relying on financial transfers alone, it builds real capacities — kilowatt-hours, meals, affordable housing, community kitchens, local farms, workshops, education and care."}</p>
+    <p class="text-muted">{sk
+      ? "Cieľom nie je nahradiť trh ani zaviesť centrálnu kontrolu, ale vybudovať novú „commons“ vrstvu spoločnosti — bezpečnostnú a rozvojovú infraštruktúru, ktorá dáva ľuďom dôstojnosť, úlohu, stabilitu a priestor na rast."
+      : "The goal is not to replace the market or impose central control, but to build a new commons layer of society — a safety and development infrastructure that gives people dignity, a role, stability and room to grow."}</p>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="border-y border-line bg-card">
+  <div class="mx-auto max-w-4xl px-5 py-16">
+    <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+      {sk ? "Problém" : "The problem"}
+    </p>
+    <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+      {sk ? "Starý model naráža na limity" : "The old model is hitting its limits"}
+    </h2>
+    <div class="my-6 rounded-2xl border border-line bg-paper p-5 font-display text-lg">
+      {sk
+        ? "práca → mzda → dôstojnosť → spotreba → dane → verejné služby"
+        : "work → wage → dignity → consumption → taxes → public services"}
+    </div>
+    <p class="text-lg leading-relaxed">{sk
+      ? "AI a automatizácia nahrádzajú čoraz viac kognitívnej, administratívnej, kreatívnej aj technickej práce. Práca nezmizne — bude menej predvídateľná a menej dostupná ako hlavný zdroj identity a príjmu. Len pasívna podpora či základný príjem vyrieši časť finančného problému, nie celý ľudský problém. Ľudia potrebujú:"
+      : "AI and automation replace ever more cognitive, administrative, creative and technical work. Work won't vanish — it will be less predictable and less available as a main source of identity and income. Passive support or basic income alone solves part of the financial problem, not the whole human problem. People need:"}</p>
+    <div class="mt-4 flex flex-wrap gap-2">
+      {needs.map((n) => (
+        <span class="rounded-full border border-line bg-paper px-3 py-1 text-sm text-muted">{n}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="mx-auto max-w-4xl px-5 py-16">
+  <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+    {sk ? "Riešenie" : "The solution"}
+  </p>
+  <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+    {sk ? "Nový spoločenský rámec" : "A new social framework"}
+  </h2>
+  <div class="my-6 rounded-2xl p-5 font-display text-lg text-white"
+    style={`background:linear-gradient(140deg, ${g[0]}, ${g[1]})`}>
+    {sk
+      ? "príspevok → reputácia → nárok → spoluvlastníctvo → služby → odolnosť komunity"
+      : "contribution → reputation → entitlement → co-ownership → services → community resilience"}
+  </div>
+  <p class="text-lg leading-relaxed">{sk
+    ? "Humanova pracuje s konceptom UBS — Universal Basic Services. Namiesto len vyplácania hotovosti (ktorá v kríze môže naháňať infláciu) buduje systémy, ktoré priamo poskytujú základné služby:"
+    : "Humanova works with UBS — Universal Basic Services. Instead of only paying out cash (which in a crisis can chase inflation), it builds systems that directly provide essential services:"}</p>
+  <ul class="mt-4 space-y-3">
+    {servicesNotCash.map((s) => (
+      <li class="flex gap-3 rounded-2xl border border-line bg-card p-4">
+        <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full" style={`background:${g[1]}`}></span>
+        <span class="leading-relaxed">{s}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="border-y border-line bg-card">
+  <div class="mx-auto max-w-4xl px-5 py-16">
+    <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+      {sk ? "Ako to funguje" : "How it works"}
+    </p>
+    <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+      {sk ? "Compute ako verejný zdroj" : "Compute as a public resource"}
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed">{sk
+      ? "Výpočtová kapacita AI infraštruktúry sa chápe ako nový verejný zdroj. Časť môže byť poskytnutá ako verejnoprospešný príspevok (compute tax / levy / pledge, verejno-súkromné partnerstvá, granty) — nie na špekulácie, ale na koordináciu úloh, plánovanie, vzdelávanie, audit a meranie dopadu."
+      : "The compute capacity of AI infrastructure is treated as a new public resource. Part of it can be contributed for public benefit (compute tax / levy / pledge, public-private partnerships, grants) — not for speculation, but for task coordination, planning, education, audit and impact measurement."}</p>
+
+    <h3 class="mt-10 font-display text-xl font-semibold">
+      {sk ? "Ekonomika príspevku" : "The contribution economy"}
+    </h3>
+    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+      {ledger.map((x) => (
+        <div class="rounded-2xl border border-line bg-paper p-5">
+          <div class="font-display text-lg font-semibold" style={`color:${g[1]}`}>{x.k}</div>
+          <p class="mt-1 text-sm leading-relaxed text-muted">{x.t}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mt-10 font-display text-xl font-semibold">
+      {sk ? "Trojvrstvový sociálny kontrakt" : "A three-tier social contract"}
+    </h3>
+    <div class="mt-4 space-y-3">
+      {tiers.map((x) => (
+        <div class="rounded-2xl border border-line bg-paper p-5">
+          <div class="font-semibold">{x.n}</div>
+          <p class="mt-1 text-sm leading-relaxed text-muted">{x.t}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mt-10 font-display text-xl font-semibold">
+      {sk ? "Decentralizovaná štruktúra (L0–L7)" : "Decentralized structure (L0–L7)"}
+    </h3>
+    <div class="mt-4 space-y-2">
+      {levels.map((x) => (
+        <div class="flex gap-4 rounded-xl border border-line bg-paper p-3">
+          <span class="font-display text-sm font-semibold w-8 shrink-0" style={`color:${g[1]}`}>{x.l}</span>
+          <span class="text-sm leading-relaxed">{x.t}</span>
+        </div>
+      ))}
+    </div>
+    <p class="mt-4 text-sm text-muted">{sk
+      ? "Nové statusové role: builder of commons, energy steward, food resilience coordinator, care mentor, housing guild lead, repair master, civic auditor, regeneration ranger, community learning guide."
+      : "New status roles: builder of commons, energy steward, food resilience coordinator, care mentor, housing guild lead, repair master, civic auditor, regeneration ranger, community learning guide."}</p>
+  </div>
+</section>
+
+<!-- PILOT -->
+<section class="mx-auto max-w-4xl px-5 py-16">
+  <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+    {sk ? "Pilot" : "Pilot"}
+  </p>
+  <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+    {sk ? "Overiteľné v meste alebo mikroregióne" : "Testable in a town or microregion"}
+  </h2>
+  <p class="mt-4 text-lg leading-relaxed">{sk
+    ? "Ideálny pilot má 8 000–25 000 obyvateľov, samosprávu otvorenú inovácii, lokálnych remeselníkov, farmárov, dostupné priestory a aspoň malý compute/AI grant. Referenčný pilot pre ~12 000 ľudí: 1 200–1 800 členov, 12–18 podov, 3 hlavné guildy. Cieľ na 12–18 mesiacov: znížiť náklady domácností, zapojiť ľudí do nových rolí a vytvoriť prvé merateľné UBS kapacity."
+    : "An ideal pilot has 8,000–25,000 residents, an innovation-open municipality, local craftspeople, farmers, available spaces and at least a small compute/AI grant. Reference pilot for ~12,000 people: 1,200–1,800 members, 12–18 pods, 3 core guilds. Goal over 12–18 months: cut household costs, engage people in new roles, and create the first measurable UBS capacities."}</p>
+  <div class="mt-6 flex flex-wrap gap-2">
+    {missions.map((m) => (
+      <span class="rounded-full px-3 py-1.5 text-sm font-medium text-white"
+        style={`background:linear-gradient(140deg, ${g[0]}, ${g[1]})`}>{m}</span>
+    ))}
+  </div>
+  <p class="mt-6 text-sm text-muted">{sk
+    ? "90-dňový štart: (1–30) výber lokality, governance, partneri, charta; (31–60) onboarding, Energy Relief Sprint, potravinový uzol, EKO ledger, prvé KPI; (61–90) prvé audity, Housing Recovery Cell, verejný dashboard, funding case."
+    : "90-day launch: (1–30) site selection, governance, partners, charter; (31–60) onboarding, Energy Relief Sprint, food hub, EKO ledger, first KPIs; (61–90) first audits, Housing Recovery Cell, public dashboard, funding case."}</p>
+</section>
+
+<!-- PARTNERS -->
+<section class="border-y border-line bg-card">
+  <div class="mx-auto max-w-4xl px-5 py-16">
+    <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+      {sk ? "Pre koho" : "Partners"}
+    </p>
+    <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+      {sk ? "Praktická odpoveď, nie ideológia" : "A practical answer, not an ideology"}
+    </h2>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2">
+      {partners.map((x) => (
+        <div class="rounded-2xl border border-line bg-paper p-5">
+          <div class="font-semibold">{x.a}</div>
+          <p class="mt-1 text-sm leading-relaxed text-muted">{x.t}</p>
+        </div>
+      ))}
+    </div>
+    <p class="mt-6 rounded-2xl border-l-4 p-4 text-sm italic text-muted" style={`border-color:${g[1]}`}>
+      {sk
+        ? "Technológia má slúžiť človeku a komunite, nie vytvoriť novú neviditeľnú mocenskú vrstvu. Systém musí byť transparentný, auditovateľný a odolný voči zneužitiu."
+        : "Technology must serve people and community, not create a new invisible power layer. The system must be transparent, auditable and capture-resistant."}
+    </p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="mx-auto max-w-4xl px-5 py-16">
+  <p class="text-sm font-semibold uppercase tracking-[0.15em]" style={`color:${g[1]}`}>
+    {sk ? "Roadmapa" : "Roadmap"}
+  </p>
+  <h2 class="mt-2 font-display text-3xl font-semibold tracking-tight">
+    {sk ? "Od pilotu ku globálnemu protokolu" : "From pilot to a global protocol"}
+  </h2>
+  <div class="mt-6 space-y-3">
+    {roadmap.map((x) => (
+      <div class="flex flex-col gap-1 rounded-2xl border border-line bg-card p-5 sm:flex-row sm:gap-6">
+        <div class="font-display font-semibold sm:w-32 sm:shrink-0" style={`color:${g[1]}`}>{x.p}</div>
+        <p class="text-sm leading-relaxed">{x.t}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="mx-auto max-w-5xl scroll-mt-20 px-5 pb-20">
+  <div class="panel-dark grain relative overflow-hidden rounded-[2rem] px-8 py-14 sm:px-14">
+    <div class="aurora opacity-40" aria-hidden="true"><span class="b1"></span><span class="b2"></span></div>
+    <div class="relative z-10">
+      <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl" style="color:#fff">
+        {sk ? "Zapojiť sa do diskusie, pilotu alebo partnerstva?" : "Join the discussion, a pilot or a partnership?"}
+      </h2>
+      <p class="on-dark-muted mt-3 max-w-2xl">
+        {sk
+          ? "Humanova Commons je otvorený koncept pre samosprávy, technologických partnerov, AI infraštruktúru, investorov, výskumníkov a komunitných lídrov."
+          : "Humanova Commons is an open concept for municipalities, technology partners, AI infrastructure, investors, researchers and community leaders."}
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="mailto:daniel@danielmarko.com" class="btn btn-light">daniel@danielmarko.com</a>
+        <a href={localizePath("/", lang)} class="btn"
+          style={`background:${g[0]};color:#fff`}>{sk ? "Ďalšie projekty" : "More projects"} →</a>
+      </div>
+      <p class="mt-6 text-sm text-white/60">
+        Daniel Marko — {sk ? "zakladateľ / AI Systems Architect / iniciátor Humanova Commons" : "Founder / AI Systems Architect / Humanova Commons initiator"}
+      </p>
+    </div>
+  </div>
+</section>

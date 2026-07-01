@@ -4,7 +4,9 @@ import ProjectDetail from "../../components/ProjectDetail.astro";
 import { projects, content } from "../../data/projects";
 
 export function getStaticPaths() {
-  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+  return projects
+    .filter((p) => p.slug !== "humanova")
+    .map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
 }
 
 const { project } = Astro.props;

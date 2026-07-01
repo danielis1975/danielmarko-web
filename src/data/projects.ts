@@ -19,6 +19,7 @@ import dqc3 from "../assets/projects/dqc-3.webp";
 import dqc4 from "../assets/projects/dqc-4.webp";
 import vitalitaImg from "../assets/projects/vitalita.webp";
 import wellnessImg from "../assets/projects/wellness.webp";
+import humanovaImg from "../assets/projects/humanova.webp";
 
 export interface ProjectLink {
   label: string;
@@ -213,6 +214,7 @@ export const projects: Project[] = [
         "HAI (Human Artificial Intelligence) skúma hypotézu Brain Instruction Set (BIS) — myšlienku, že ľudské poznanie sa dá reprezentovať vo vektorovom priestore so zdieľaným, sémanticky ukotveným jadrom a individuálnou väzbovou vrstvou nad ním. Myšlienka pochádza z roku 2000 a dnes je testovateľná voči reálnym jazykovým modelom.",
         "Rekurzívnym rozkladom grafu 13 534 konceptov a 44 682 vážených hrán štúdia obnovila konečnú, zdieľanú bázu 152 overených sémantických „terminálov“ v 9 modalitách — pričom objavovanie nových terminálov saturovalo pod 2 %, čo podporuje tézu o konečnosti. Jadro 16 terminálov nezávisle potvrdil model od OpenAI aj od Anthropicu (81 % zhoda modalít).",
         "Dve validačné brány replikovali tri modely z dvoch labov: reprezentačná podobnosť medzi zdrojmi bola vysoká (RSA = 0,929), perspektíva zdroja bola dekódovateľná z obsahu na 98,4 %, a geometria podobnosti terminálov reprodukovala známu psychofyziku bez zmyslového dohľadu (čuch ≈ 1D, chuť ≈ 2D, sluch ≈ 3D, zrak/hmat ≈ 5D). Štúdia výslovne meria štruktúru reprezentácií, nie qualia.",
+        "Nad rámec správania (v1.2) posúva BIS k mechanistickej báze: sondovanie open-weight modelov (Gemma-2-2B, Qwen2.5-1.5B, Phi-3.5-mini) ukazuje, že terminály sú lineárne čitateľné (AUC 0,86–0,93) a kauzálne ovplyvniteľné, vysvetlená variancia vrcholí v strede siete (R² = 0,59, vrstva 14) a jadro sa zhoduje s nezávislými sparse-autoencoder črtami (Gemma Scope).",
       ],
       highlights: [
         "152 overených sémantických „terminálov“ naprieč 9 modalitami",
@@ -220,6 +222,7 @@ export const projects: Project[] = [
         "Cross-model jadro 16 terminálov potvrdené modelmi OpenAI aj Anthropic",
         "Reprezentačná podobnosť RSA = 0,929; perspektíva dekódovateľná na 98,4 %",
         "Reprodukuje psychofyziku (čuch 1D, chuť 2D, sluch 3D, zrak/hmat 5D) bez zmyslov",
+        "Mechanistické: terminály lineárne čitateľné (AUC 0,86–0,93) a kauzálne ovplyvniteľné naprieč 3 architektúrami; zhoda so SAE črtami",
       ],
       stats: [
         { value: "152", label: "sémantických terminálov" },
@@ -237,6 +240,7 @@ export const projects: Project[] = [
         "HAI (Human Artificial Intelligence) investigates the Brain Instruction Set (BIS) hypothesis — that human cognition can be represented in a vector space with a shared, semantically grounded core plus an individual binding layer. The idea dates back to 2000 and is now testable against real language models.",
         "By recursively decomposing a graph of 13,534 concepts and 44,682 weighted edges, the study recovered a finite, shared basis of 152 verified semantic “terminals” across 9 modalities — with the discovery of new terminals saturating below 2%, supporting the finiteness claim. A cross-model core of 16 terminals was independently confirmed by both an OpenAI and an Anthropic model (81% modality concordance).",
         "Two validity gates replicated across three models from two labs: inter-source representational similarity was high (RSA = 0.929), source perspective was decodable from content alone at 98.4%, and the terminal-similarity geometry reproduced known psychophysics without sensory supervision (smell ≈ 1D, taste ≈ 2D, hearing ≈ 3D, vision/touch ≈ 5D). The study explicitly measures the structure of representations, not phenomenal qualia.",
+        "Beyond behaviour (v1.2), BIS moves toward a mechanistic basis: probing open-weight models (Gemma-2-2B, Qwen2.5-1.5B, Phi-3.5-mini) shows the terminals are linearly readable (AUC 0.86–0.93) and causally steerable, variance explained peaks mid-network (R² = 0.59 at layer 14), and the core aligns with independent sparse-autoencoder features (Gemma Scope).",
       ],
       highlights: [
         "152 verified semantic “terminals” across 9 modalities",
@@ -244,6 +248,7 @@ export const projects: Project[] = [
         "Cross-model core of 16 terminals confirmed by both OpenAI and Anthropic models",
         "Inter-source similarity RSA = 0.929; perspective decodable at 98.4%",
         "Reproduces psychophysics (smell 1D, taste 2D, hearing 3D, vision/touch 5D) with no senses",
+        "Mechanistic: terminals linearly readable (AUC 0.86–0.93) & causally steerable across 3 architectures; aligns with SAE features",
       ],
       stats: [
         { value: "152", label: "semantic terminals" },
@@ -419,6 +424,47 @@ export const projects: Project[] = [
         { value: "YouTube", label: "channel" },
         { value: "Free", label: "mini-course" },
       ],
+    },
+  },
+  {
+    slug: "humanova",
+    gradient: ["#10b981", "#0369a1"],
+    accent: "#0369a1",
+    image: humanovaImg,
+    imageAlt: "Humanova Commons",
+    glyph: "⬡",
+    links: [{ label: "Read the vision", url: "/humanova" }],
+    sk: {
+      name: "Humanova Commons",
+      status: "Vízia",
+      tagline: "Civilizačná infraštruktúra pre AI éru — pre odolné komunity.",
+      lead: "Premieňa časť AI produktivity, výpočtovej kapacity a ľudského príspevku na reálne verejné služby: bývanie, energiu, jedlo, vodu, vzdelávanie a starostlivosť.",
+      body: [
+        "Humanova Commons hľadá praktickú odpoveď na otázku, čo sa stane so spoločnosťou, keď AI a automatizácia oslabia tradičný model práce, príjmu a stability. Namiesto len peňazí buduje reálne kapacity a novú „commons“ vrstvu spoločnosti.",
+      ],
+      highlights: [
+        "UBS (Universal Basic Services) namiesto len UBI — služby, nie hotovosť",
+        "Compute ako verejný zdroj + ekonomika príspevku (EKO/SVC/CRED/REP)",
+        "Trojvrstvový sociálny kontrakt a decentralizovaná štruktúra L0–L7",
+        "Overiteľné na pilote v meste/mikroregióne (8 000–25 000 obyvateľov)",
+      ],
+      note: "Otvorený koncept — hľadá samosprávy, tech partnerov, investorov a komunity.",
+    },
+    en: {
+      name: "Humanova Commons",
+      status: "Vision",
+      tagline: "AI-era civic infrastructure for resilient communities.",
+      lead: "Turns part of AI productivity, compute capacity and human contribution into real public services: housing, energy, food, water, education and care.",
+      body: [
+        "Humanova Commons is a practical answer to what happens to society when AI and automation erode the traditional model of work, income and stability. Instead of cash alone, it builds real capacities and a new commons layer of society.",
+      ],
+      highlights: [
+        "UBS (Universal Basic Services), not just UBI — services, not cash",
+        "Compute as a public resource + a contribution economy (EKO/SVC/CRED/REP)",
+        "A three-tier social contract and a decentralized L0–L7 structure",
+        "Testable via a town/microregion pilot (8,000–25,000 people)",
+      ],
+      note: "An open concept — seeking municipalities, tech partners, investors and communities.",
     },
   },
 ];
