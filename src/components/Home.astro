@@ -122,35 +122,140 @@ const heroStats =
 
 <!-- ============ ABOUT ============ -->
 <section id="about" class="scroll-mt-20 border-y border-line bg-card">
-  <div class="mx-auto grid max-w-5xl gap-10 px-5 py-20 md:grid-cols-[1fr_1.4fr]">
-    <div>
-      <h2 class="font-display text-3xl font-semibold tracking-tight">
-        {tr("home.aboutTitle")}
-      </h2>
-      <div class="mt-6 flex gap-3">
-        <span
-          class="h-2.5 w-2.5 animate-pulse rounded-full"
-          style="background:var(--color-accent-2)"></span>
-        <span class="text-sm text-muted"
-          >{lang === "sk" ? "Otvorený spolupráci" : "Open to collaboration"}</span
+  <div class="mx-auto max-w-5xl px-5 py-20">
+    <div class="grid gap-10 md:grid-cols-[0.85fr_1.15fr]">
+      <!-- identity card -->
+      <div>
+        <div
+          class="flex h-28 w-28 items-center justify-center rounded-3xl font-display text-4xl font-semibold text-white shadow-lg"
+          style="background:linear-gradient(140deg,#6d5efc,#18b8a6)"
         >
+          DM
+        </div>
+        <h2 class="mt-6 font-display text-3xl font-semibold tracking-tight">
+          Daniel Marko
+        </h2>
+        <p class="mt-2 font-semibold" style="color:var(--color-accent)">
+          {
+            lang === "sk"
+              ? "Architekt aplikovanej AI · Agentická AI & bezpečnosť AI"
+              : "Applied AI Architect · Agentic AI & AI Safety"
+          }
+        </p>
+        <p class="mt-1 text-sm text-muted">
+          {
+            lang === "sk"
+              ? "Bratislava — otvorený Londýnu (hybrid/relokácia)"
+              : "Bratislava, Slovakia — open to London (hybrid/relocation)"
+          }
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a
+            href="https://www.linkedin.com/in/daniel-marko-1a185610"
+            rel="noopener"
+            target="_blank"
+            class="btn btn-dark">LinkedIn ↗</a
+          >
+          <a href="#contact" class="btn btn-light"
+            >{tr("nav.contact")}</a
+          >
+        </div>
+        <p class="mt-6 text-sm text-muted">
+          {
+            lang === "sk"
+              ? "Jazyky: slovenčina (native) · čeština · angličtina · nemčina · ruština"
+              : "Languages: Slovak (native) · Czech · English · German · Russian"
+          }
+        </p>
       </div>
-    </div>
-    <div class="space-y-5 text-lg leading-relaxed">
-      <p>
-        {
-          lang === "sk"
-            ? "Som Daniel Marko — pracujem na priesečníku umelej inteligencie, zdravia a dlhovekosti. Staviam personalizované AI systémy, perzistentných symbiotických agentov a skúmam samotné základy poznania."
-            : "I'm Daniel Marko — working at the intersection of artificial intelligence, health, and longevity. I build personalized AI systems, persistent symbiotic agents, and research the very foundations of cognition."
-        }
-      </p>
-      <p class="text-muted">
-        {
-          lang === "sk"
-            ? "Verím, že technológia má slúžiť dlhšiemu, zdravšiemu a vedomejšiemu životu — od každodenného rytmu tela až po kontinuitu mysle."
-            : "I believe technology should serve a longer, healthier, and more conscious life — from the body's daily rhythm to the continuity of the mind."
-        }
-      </p>
+
+      <!-- bio + expertise + career -->
+      <div>
+        <div class="space-y-5 text-lg leading-relaxed">
+          <p>
+            {
+              lang === "sk"
+                ? "Som architekt aplikovanej AI a staviteľ agentických systémov s 25+ rokmi skúseností v podnikovej IT prevádzke, dodávke softvéru, riadení programov a kontinuite biznisu. Túto disciplínu spoľahlivej prevádzky dnes spájam s praktickou tvorbou AI systémov."
+                : "I'm an Applied AI architect and agentic-systems builder with 25+ years across enterprise IT operations, software delivery, program management and business continuity. Today I combine that production-reliability discipline with hands-on AI systems work."
+            }
+          </p>
+          <p class="text-muted">
+            {
+              lang === "sk"
+                ? "Som zakladateľ NewAgy a architekt Mira / OpenClaw — perzistentného multi-agentového AI systému s LLM routingom, RAG, hlasovými a messaging pipeline, watchdogmi a bezpečnostne orientovaným návrhom. Staviam reálne AI systémy a prekladám ich do praktického nasadenia, evaluácie, governance a biznis hodnoty."
+                : "I'm the founder of NewAgy and the architect of Mira / OpenClaw — a persistent multi-agent AI system with LLM routing, RAG, voice and messaging pipelines, watchdogs and safety-oriented design. I build real AI systems and translate them into practical adoption, evaluation, governance and business value."
+            }
+          </p>
+        </div>
+
+        <!-- expertise tags -->
+        <div class="mt-8 flex flex-wrap gap-2">
+          {
+            [
+              "Agentic AI",
+              "LLM routing & failover",
+              "RAG & vector search",
+              "Prompt architecture",
+              "AI safety & governance",
+              "Enterprise change mgmt",
+              "Python · JS · Linux",
+            ].map((tag) => (
+              <span class="rounded-full border border-line bg-paper px-3 py-1 text-xs font-medium text-muted">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+
+        <!-- career -->
+        <div class="mt-8 space-y-3 border-t border-line pt-6">
+          {
+            [
+              {
+                role:
+                  lang === "sk"
+                    ? "Change / Program / Business Continuity Manager"
+                    : "Change / Program / Business Continuity Manager",
+                org: "AT&T Global Network Services",
+                yr: "2010 – " + (lang === "sk" ? "súčasnosť" : "present"),
+              },
+              {
+                role: lang === "sk" ? "Zakladateľ & CEO" : "Founder & CEO",
+                org: "NewAgy",
+                yr: "2024 – " + (lang === "sk" ? "súčasnosť" : "present"),
+              },
+              {
+                role: lang === "sk" ? "Architekt" : "Architect",
+                org: "Mira / OpenClaw — agentic AI R&D",
+                yr: "2023 – " + (lang === "sk" ? "súčasnosť" : "present"),
+              },
+              {
+                role:
+                  lang === "sk"
+                    ? "Prednášajúci — Kognitívne systémy / AI"
+                    : "Lecturer — Cognitive Systems / AI",
+                org: "Comenius University, Bratislava",
+                yr: "2006",
+              },
+            ].map((job) => (
+              <div class="flex items-baseline justify-between gap-4">
+                <div>
+                  <div class="font-semibold">{job.role}</div>
+                  <div class="text-sm text-muted">{job.org}</div>
+                </div>
+                <div class="shrink-0 text-sm text-muted">{job.yr}</div>
+              </div>
+            ))
+          }
+          <p class="pt-1 text-sm text-muted">
+            {
+              lang === "sk"
+                ? "Skôr: IBM, Siemens PSE, Slovak Telecom — riadenie programov a releasov."
+                : "Earlier: IBM, Siemens PSE, Slovak Telecom — program & release management."
+            }
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
