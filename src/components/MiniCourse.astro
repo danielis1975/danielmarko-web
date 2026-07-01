@@ -8,6 +8,8 @@ interface Props {
 }
 const { lang } = Astro.props;
 const g = ["#3aa0e0", "#1f7fc4"];
+const slidesUrl =
+  "https://github.com/danielis1975/danielmarko-web/releases/download/minicourse-slides-v1/awakening-to-vitality-slides.zip";
 ---
 
 <!-- HERO -->
@@ -34,6 +36,9 @@ const g = ["#3aa0e0", "#1f7fc4"];
     <div class="mt-8 flex flex-wrap justify-center gap-3">
       <a href="#lessons" class="btn btn-dark"
         >{lang === "sk" ? "Spustiť kurz" : "Start the course"} ↓</a
+      >
+      <a href={slidesUrl} rel="noopener" class="btn btn-light"
+        >{lang === "sk" ? "Stiahnuť slajdy (PDF)" : "Download slides (PDF)"} ↓</a
       >
       <a href={channelUrl} target="_blank" rel="noopener" class="btn btn-light"
         >YouTube ↗</a
