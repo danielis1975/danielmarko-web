@@ -10,6 +10,10 @@ cd "$(dirname "$0")/.."
 echo "▶ Building…"
 npm run build
 
+# Belt-and-suspenders: GitHub Pages runs Jekyll, which ignores _astro/ (underscore
+# dirs) → CSS/JS/images 404. .nojekyll disables Jekyll. (Also in public/.)
+: > dist/.nojekyll
+
 echo "▶ Publishing dist/ → gh-pages…"
 cd dist
 git init -q
