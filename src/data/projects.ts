@@ -13,6 +13,10 @@ import haiAtlas from "../assets/projects/hai-atlas.webp";
 import haiSaturation from "../assets/projects/hai-saturation.webp";
 import haiGeometry from "../assets/projects/hai-geometry.webp";
 import haiRsa from "../assets/projects/hai-rsa.webp";
+import dqcImg from "../assets/projects/dqc.webp";
+import dqc2 from "../assets/projects/dqc-2.webp";
+import dqc3 from "../assets/projects/dqc-3.webp";
+import dqc4 from "../assets/projects/dqc-4.webp";
 import vitalitaImg from "../assets/projects/vitalita.webp";
 import wellnessImg from "../assets/projects/wellness.webp";
 
@@ -242,6 +246,60 @@ export const projects: Project[] = [
         { value: "9", label: "modalities" },
         { value: "0.929", label: "inter-source RSA" },
         { value: "DOI", label: "published (Zenodo)" },
+      ],
+    },
+  },
+  {
+    slug: "dqc",
+    gradient: ["#4f46e5", "#0891b2"],
+    accent: "#4f46e5",
+    image: dqcImg,
+    imageAlt: "DQC — double-slit interference on a 128³ lattice",
+    gallery: [dqc2, dqc3, dqc4],
+    glyph: "⚛",
+    links: [],
+    sk: {
+      name: "DQC",
+      status: "Výskum",
+      tagline: "Diskrétna kvantová fyzika — celočíselná simulácia na mriežke 128³.",
+      lead: "Výskumná simulácia, ktorá skúma, či vlnové javy (napr. interferencia na dvojštrbine) vznikajú z čisto celočíselnej fyziky bez pohyblivej rádovej čiarky.",
+      body: [
+        "DQC (Discrete Quantum Computing) je fyzikálna simulácia bežiaca úplne v celočíselnej / fixed-point aritmetike na toroidálnej mriežke 128³ — bez floating pointu — s gauge / „Maxwell-lite“ dynamikou a no-signalling poistkami.",
+        "Kľúčový experiment reprodukuje pokus s dvojštrbinou: profily jednotlivých štrbín (L, R) sú hladké obálky, kým „obe štrbiny“ (B) vykazujú jasné pruhy. Interferenčný člen B − (L+R) pravidelne strieda znamienko — čo je signatúra skutočnej interferencie, nie len „viac svetla v strede“.",
+        "Projekt je postavený na reprodukovateľnosti: sweep cez budiacu frekvenciu (počet pruhov), trojité porovnanie B/L/R a ukladanie intenzitných polí — výpočtovo úsporný harness na skúmanie emergentného kvantového správania z diskrétnych pravidiel.",
+      ],
+      highlights: [
+        "Celočíselná / fixed-point fyzika na mriežke 128³ (žiadny floating point)",
+        "Gauge / Maxwell-lite dynamika polí s no-signalling poistkami",
+        "Reprodukuje interferenciu na dvojštrbine; člen B−(L+R) strieda znamienko",
+        "Výpočtovo úsporný sweep + trojité porovnanie pre reprodukovateľnosť",
+      ],
+      stats: [
+        { value: "128³", label: "mriežka" },
+        { value: "int-only", label: "aritmetika" },
+        { value: "2-slit", label: "interferencia potvrdená" },
+      ],
+    },
+    en: {
+      name: "DQC",
+      status: "Research",
+      tagline: "Discrete quantum physics — an integer-only simulation on a 128³ lattice.",
+      lead: "A research simulation exploring whether wave phenomena (like double-slit interference) emerge from purely integer physics with no floating point.",
+      body: [
+        "DQC (Discrete Quantum Computing) is a physics simulation that runs entirely in integer / fixed-point arithmetic on a 128³ toroidal lattice — no floating point — with gauge / “Maxwell-lite” dynamics and no-signalling guardrails.",
+        "The headline experiment reproduces the double-slit experiment: single-slit profiles (L, R) are smooth envelopes, while “both slits” (B) shows clear fringes. The interference term B − (L+R) alternates regularly in sign — the signature of genuine interference, not just “more light in the middle.”",
+        "It is built for reproducibility: sweeps over drive frequency (fringe count), triple B/L/R comparison runs, and saved intensity fields — a compute-saving harness for exploring emergent quantum-like behaviour from discrete rules.",
+      ],
+      highlights: [
+        "Integer / fixed-point physics on a 128³ lattice (no floating point)",
+        "Gauge / Maxwell-lite field dynamics with no-signalling guardrails",
+        "Reproduces double-slit interference; the B−(L+R) term alternates in sign",
+        "Compute-saving sweep + triple-compare harness for reproducibility",
+      ],
+      stats: [
+        { value: "128³", label: "lattice" },
+        { value: "int-only", label: "arithmetic" },
+        { value: "2-slit", label: "interference confirmed" },
       ],
     },
   },
