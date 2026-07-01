@@ -111,8 +111,17 @@ a {
 }
 .btn-light {
   background: #ffffff;
-  color: var(--color-ink);
+  color: #0b0c10;
   border: 1px solid var(--color-line);
+}
+
+/* Dark panel with guaranteed-legible text (literal colors, no var reliance) */
+.panel-dark {
+  background: #0b0c10;
+  color: #ffffff;
+}
+.panel-dark .on-dark-muted {
+  color: rgba(255, 255, 255, 0.72);
 }
 .btn-light:hover {
   border-color: var(--color-ink);
