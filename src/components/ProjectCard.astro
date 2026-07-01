@@ -22,13 +22,8 @@ const [g1, g2] = project.gradient;
   class="group reveal relative flex flex-col overflow-hidden rounded-3xl border border-line bg-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/10"
   style={`animation-delay:${index * 80}ms`}
 >
-  <!-- Image with gradient wash -->
+  <!-- Image -->
   <div class="relative aspect-[16/10] overflow-hidden">
-    <div
-      class="absolute inset-0 z-10 opacity-80 mix-blend-multiply transition-opacity duration-300 group-hover:opacity-60"
-      style={`background:linear-gradient(140deg, ${g1}, ${g2})`}
-    >
-    </div>
     <Image
       src={project.image}
       alt={project.imageAlt}
@@ -36,8 +31,19 @@ const [g1, g2] = project.gradient;
       sizes="(max-width: 640px) 100vw, 33vw"
       class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
     />
+    <!-- accent bar -->
     <div
-      class="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/90 text-xl shadow-sm backdrop-blur"
+      class="absolute inset-x-0 top-0 z-10 h-1.5"
+      style={`background:linear-gradient(90deg, ${g1}, ${g2})`}
+    >
+    </div>
+    <!-- subtle top scrim only for badge legibility -->
+    <div
+      class="absolute inset-x-0 top-0 z-10 h-20 bg-gradient-to-b from-black/35 to-transparent"
+    >
+    </div>
+    <div
+      class="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/95 text-xl shadow-sm backdrop-blur"
     >
       {project.glyph}
     </div>

@@ -8,14 +8,14 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const c = content(project, "sk");
+const c = content(project, "en");
 ---
 
 <Layout
   title={`${c.name} — Daniel Marko`}
   description={c.tagline}
-  lang="sk"
+  lang="en"
   basePath={`/${project.slug}`}
 >
-  <ProjectDetail lang="sk" project={project} />
+  <ProjectDetail lang="en" project={project} />
 </Layout>

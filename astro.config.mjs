@@ -9,8 +9,8 @@ export default defineConfig({
   site: "https://danielmarko.com",
   trailingSlash: "ignore",
   i18n: {
-    defaultLocale: "sk",
-    locales: ["sk", "en"],
+    defaultLocale: "en",
+    locales: ["en", "sk"],
     routing: {
       prefixDefaultLocale: false,
     },

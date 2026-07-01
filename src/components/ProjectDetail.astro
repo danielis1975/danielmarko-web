@@ -59,7 +59,7 @@ const others = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
                   href={l.url}
                   rel="noopener"
                   target="_blank"
-                  class="rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+                  class="btn btn-grad"
                   style={`background:linear-gradient(140deg, ${g1}, ${g2})`}
                 >
                   {l.label} ↗
@@ -143,13 +143,15 @@ const others = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
     <section class="mx-auto max-w-5xl px-5 pb-16">
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
         {project.gallery.map((img) => (
-          <div class="overflow-hidden rounded-2xl border border-line bg-card shadow-sm">
+          <div
+            class="flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-line bg-card p-2 shadow-sm"
+          >
             <Image
               src={img}
-              alt={`${c.name} screenshot`}
+              alt={`${c.name}`}
               widths={[300, 600]}
               sizes="(max-width: 640px) 50vw, 33vw"
-              class="h-auto w-full object-cover"
+              class="max-h-full w-auto max-w-full rounded-lg object-contain"
             />
           </div>
         ))}

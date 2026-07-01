@@ -2,6 +2,7 @@
 import { projects, content } from "../data/projects";
 import { t, type Lang } from "../i18n";
 import ProjectCard from "./ProjectCard.astro";
+import HeroVideo from "./HeroVideo.astro";
 
 interface Props {
   lang: Lang;
@@ -56,16 +57,8 @@ const heroStats =
       class="reveal mt-9 flex flex-wrap items-center gap-3"
       style="animation-delay:240ms"
     >
-      <a
-        href="#projects"
-        class="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
-        >{tr("home.projectsTitle")} →</a
-      >
-      <a
-        href="#contact"
-        class="rounded-full border border-line bg-white/60 px-6 py-3 text-sm font-semibold backdrop-blur transition-colors hover:border-ink"
-        >{tr("nav.contact")}</a
-      >
+      <a href="#projects" class="btn btn-dark">{tr("home.projectsTitle")} →</a>
+      <a href="#contact" class="btn btn-light">{tr("nav.contact")}</a>
     </div>
 
     <!-- hero stats -->
@@ -83,6 +76,32 @@ const heroStats =
       }
     </div>
   </div>
+</section>
+
+<!-- ============ HERO VIDEO (Mira podcast) ============ -->
+<section class="mx-auto max-w-5xl px-5 pb-4">
+  <div class="mb-5 flex items-center gap-3">
+    <span
+      class="flex h-9 w-9 items-center justify-center rounded-xl text-white"
+      style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)">✦</span
+    >
+    <div>
+      <h2 class="font-display text-xl font-semibold leading-none tracking-tight">
+        {lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
+      </h2>
+      <p class="mt-1 text-sm text-muted">
+        {
+          lang === "sk"
+            ? "Rozhovor o symbiotickej AI"
+            : "A conversation about symbiotic AI"
+        }
+      </p>
+    </div>
+  </div>
+  <HeroVideo
+    id="wdhKs--HVfs"
+    title={lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
+  />
 </section>
 
 <!-- ============ PROJECTS ============ -->

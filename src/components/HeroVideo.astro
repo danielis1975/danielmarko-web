@@ -1,0 +1,56 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+const { id, title } = Astro.props;
+const thumb = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+---
+
+<div
+  class="video-facade rounded-[1.5rem] border border-line bg-ink shadow-2xl shadow-black/20"
+  data-yt={id}
+  role="button"
+  tabindex="0"
+  aria-label={title}
+>
+  <img src={thumb} alt={title} loading="lazy" width="1280" height="720" />
+  <div class="play">
+    <span>
+      <svg
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path d="M8 5.5v13l11-6.5-11-6.5z" fill="#0b0c10"></path>
+      </svg>
+    </span>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".video-facade").forEach((el) => {
+    const load = () => {
+      const id = el.dataset.yt;
+      if (!id || el.dataset.loaded) return;
+      el.dataset.loaded = "1";
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+      iframe.title = el.getAttribute("aria-label") || "video";
+      el.innerHTML = "";
+      el.appendChild(iframe);
+    };
+    el.addEventListener("click", load);
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        load();
+      }
+    });
+  });
+</script>

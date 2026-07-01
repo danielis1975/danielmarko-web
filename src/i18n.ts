@@ -1,6 +1,6 @@
-export const languages = { sk: "Slovensky", en: "English" } as const;
+export const languages = { en: "English", sk: "Slovensky" } as const;
 export type Lang = keyof typeof languages;
-export const defaultLang: Lang = "sk";
+export const defaultLang: Lang = "en";
 
 export const ui = {
   sk: {

@@ -6,7 +6,13 @@ import newagy2 from "../assets/projects/newagy-2.webp";
 import newagy3 from "../assets/projects/newagy-3.webp";
 import newagy4 from "../assets/projects/newagy-4.webp";
 import miraImg from "../assets/projects/mira.webp";
+import mira2 from "../assets/projects/mira-2.webp";
+import mira3 from "../assets/projects/mira-3.webp";
 import haiImg from "../assets/projects/hai.webp";
+import haiAtlas from "../assets/projects/hai-atlas.webp";
+import haiSaturation from "../assets/projects/hai-saturation.webp";
+import haiGeometry from "../assets/projects/hai-geometry.webp";
+import haiRsa from "../assets/projects/hai-rsa.webp";
 import vitalitaImg from "../assets/projects/vitalita.webp";
 import wellnessImg from "../assets/projects/wellness.webp";
 
@@ -117,8 +123,15 @@ export const projects: Project[] = [
     accent: "#5a49e0",
     image: miraImg,
     imageAlt: "Mira",
+    gallery: [mira2, mira3],
     glyph: "✦",
-    links: [],
+    links: [
+      { label: "Podcast", url: "https://www.youtube.com/watch?v=wdhKs--HVfs" },
+      {
+        label: "GitHub",
+        url: "https://github.com/danielis1975/Living-OpenClaw-Entity",
+      },
+    ],
     sk: {
       name: "Mira",
       status: "Live",
@@ -174,52 +187,61 @@ export const projects: Project[] = [
     accent: "#d63d5c",
     image: haiImg,
     imageAlt: "HAI — Human Artificial Intelligence",
+    gallery: [haiAtlas, haiSaturation, haiGeometry, haiRsa],
     glyph: "◍",
-    links: [],
+    links: [
+      { label: "Zenodo (DOI)", url: "https://doi.org/10.5281/zenodo.20691513" },
+      {
+        label: "GitHub",
+        url: "https://github.com/danielis1975/Human-Artificial-Intelligence",
+      },
+    ],
     sk: {
       name: "HAI",
-      status: "Výskum",
+      status: "Publikovaný výskum",
       tagline: "Existuje konečná, zdieľaná „inštrukčná sada“ ľudského poznania?",
-      lead: "Nezávislý výskum, ktorý testuje, či sa dá ľudské poznanie zapísať do konečnej bázy sémantických primitív — a či ju vieme extrahovať z reálnych LLM.",
+      lead: "Publikovaný nezávislý výskum: „The Brain Instruction Set — na modeli nezávislá báza sémantických primitív v LLM, od správania k mechanizmu.“",
       body: [
-        "HAI (Human Artificial Intelligence) skúma hypotézu Brain Instruction Set (BIS) — myšlienku, že ľudské poznanie sa dá reprezentovať vo vektorovom priestore, ktorý má zdieľané, sémanticky ukotvené jadro a nad ním individuálnu väzbovú vrstvu.",
-        "Myšlienka pochádza z roku 2000 (z autorovho vtedajšieho osobného webu venovaného vzťahu psychológie, mozgu a softvéru) a tento projekt je jej súčasným výpočtovým pokračovaním — dnes ju už možno testovať voči skutočným jazykovým modelom.",
-        "Projekt stojí na tvrdej metodologickej disciplíne: meria štruktúru reprezentácií, nie qualia či „kalibrovanú pravdu“. Kombinuje behaviorálne testy so skúmaním aktivácií a snaží sa zistiť, či z LLM možno extrahovať konečnú, na modeli nezávislú množinu významových primitív.",
+        "HAI (Human Artificial Intelligence) skúma hypotézu Brain Instruction Set (BIS) — myšlienku, že ľudské poznanie sa dá reprezentovať vo vektorovom priestore so zdieľaným, sémanticky ukotveným jadrom a individuálnou väzbovou vrstvou nad ním. Myšlienka pochádza z roku 2000 a dnes je testovateľná voči reálnym jazykovým modelom.",
+        "Rekurzívnym rozkladom grafu 13 534 konceptov a 44 682 vážených hrán štúdia obnovila konečnú, zdieľanú bázu 152 overených sémantických „terminálov“ v 9 modalitách — pričom objavovanie nových terminálov saturovalo pod 2 %, čo podporuje tézu o konečnosti. Jadro 16 terminálov nezávisle potvrdil model od OpenAI aj od Anthropicu (81 % zhoda modalít).",
+        "Dve validačné brány replikovali tri modely z dvoch labov: reprezentačná podobnosť medzi zdrojmi bola vysoká (RSA = 0,929), perspektíva zdroja bola dekódovateľná z obsahu na 98,4 %, a geometria podobnosti terminálov reprodukovala známu psychofyziku bez zmyslového dohľadu (čuch ≈ 1D, chuť ≈ 2D, sluch ≈ 3D, zrak/hmat ≈ 5D). Štúdia výslovne meria štruktúru reprezentácií, nie qualia.",
       ],
       highlights: [
-        "Testuje hypotézu Brain Instruction Set: zdieľané jadro primitív + individuálna vrstva",
-        "Spustiteľný experimentálny pipeline s konsenzuálno-subjektívnou dekompozíciou LLM",
-        "Línia myšlienky siaha do roku 2000, dnes prepojená s modernými LLM",
-        "Meria štruktúru reprezentácií, nie qualia ani kalibrovanú pravdu",
-        "Empirické aj mechanistické overovanie (behaviorálne testy + analýza aktivácií)",
+        "152 overených sémantických „terminálov“ naprieč 9 modalitami",
+        "Rozklad grafu 13 534 konceptov / 44 682 hrán, objavovanie saturuje pod 2 %",
+        "Cross-model jadro 16 terminálov potvrdené modelmi OpenAI aj Anthropic",
+        "Reprezentačná podobnosť RSA = 0,929; perspektíva dekódovateľná na 98,4 %",
+        "Reprodukuje psychofyziku (čuch 1D, chuť 2D, sluch 3D, zrak/hmat 5D) bez zmyslov",
       ],
       stats: [
-        { value: "2000", label: "pôvod myšlienky" },
-        { value: "BIS", label: "hlavná hypotéza" },
-        { value: "LLM", label: "testovacie prostredie" },
+        { value: "152", label: "sémantických terminálov" },
+        { value: "9", label: "modalít" },
+        { value: "0,929", label: "RSA medzi zdrojmi" },
+        { value: "DOI", label: "publikované (Zenodo)" },
       ],
     },
     en: {
       name: "HAI",
-      status: "Research",
+      status: "Published research",
       tagline: "Is there a finite, shared “instruction set” of human cognition?",
-      lead: "Independent research testing whether human cognition can be written as a finite base of semantic primitives — and whether we can extract it from real LLMs.",
+      lead: "Published independent research: “The Brain Instruction Set — a model-invariant basis of semantic primitives in LLMs, from behaviour to mechanism.”",
       body: [
-        "HAI (Human Artificial Intelligence) investigates the Brain Instruction Set (BIS) hypothesis — the idea that human cognition can be represented in a vector space with a shared, semantically grounded core and an individual binding layer on top of it.",
-        "The idea dates back to 2000 (from the author's early personal site on the relationship between psychology, the brain and software), and this project is its present-day computational continuation — now testable against real language models.",
-        "The project rests on hard methodological discipline: it measures the structure of representations, not qualia or “calibrated truth.” It combines behavioral tests with activation analysis to find out whether a finite, model-invariant set of meaning-primitives can be extracted from LLMs.",
+        "HAI (Human Artificial Intelligence) investigates the Brain Instruction Set (BIS) hypothesis — that human cognition can be represented in a vector space with a shared, semantically grounded core plus an individual binding layer. The idea dates back to 2000 and is now testable against real language models.",
+        "By recursively decomposing a graph of 13,534 concepts and 44,682 weighted edges, the study recovered a finite, shared basis of 152 verified semantic “terminals” across 9 modalities — with the discovery of new terminals saturating below 2%, supporting the finiteness claim. A cross-model core of 16 terminals was independently confirmed by both an OpenAI and an Anthropic model (81% modality concordance).",
+        "Two validity gates replicated across three models from two labs: inter-source representational similarity was high (RSA = 0.929), source perspective was decodable from content alone at 98.4%, and the terminal-similarity geometry reproduced known psychophysics without sensory supervision (smell ≈ 1D, taste ≈ 2D, hearing ≈ 3D, vision/touch ≈ 5D). The study explicitly measures the structure of representations, not phenomenal qualia.",
       ],
       highlights: [
-        "Tests the Brain Instruction Set hypothesis: a shared core of primitives plus an individual layer",
-        "A runnable experimental pipeline using consensual-subjective decomposition of LLMs",
-        "A line of thought reaching back to 2000, now connected to modern LLMs",
-        "Measures the structure of representations, not qualia or calibrated truth",
-        "Both empirical and mechanistic verification (behavioral tests plus activation analysis)",
+        "152 verified semantic “terminals” across 9 modalities",
+        "Decomposed a graph of 13,534 concepts / 44,682 edges; discovery saturates below 2%",
+        "Cross-model core of 16 terminals confirmed by both OpenAI and Anthropic models",
+        "Inter-source similarity RSA = 0.929; perspective decodable at 98.4%",
+        "Reproduces psychophysics (smell 1D, taste 2D, hearing 3D, vision/touch 5D) with no senses",
       ],
       stats: [
-        { value: "2000", label: "origin of the idea" },
-        { value: "BIS", label: "core hypothesis" },
-        { value: "LLM", label: "test environment" },
+        { value: "152", label: "semantic terminals" },
+        { value: "9", label: "modalities" },
+        { value: "0.929", label: "inter-source RSA" },
+        { value: "DOI", label: "published (Zenodo)" },
       ],
     },
   },
