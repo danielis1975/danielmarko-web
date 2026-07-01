@@ -135,10 +135,6 @@ export const projects: Project[] = [
         label: "Alignment case study",
         url: "https://github.com/danielis1975/mira-alignment-case-study",
       },
-      {
-        label: "GitHub",
-        url: "https://github.com/danielis1975/Living-OpenClaw-Entity",
-      },
     ],
     sk: {
       name: "Mira",
