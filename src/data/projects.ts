@@ -130,7 +130,7 @@ export const projects: Project[] = [
     gallery: [mira2, mira3],
     glyph: "✦",
     links: [
-      { label: "Podcast", url: "https://www.youtube.com/watch?v=wdhKs--HVfs" },
+      { label: "Podcast + transcript", url: "/mira/podcast" },
       {
         label: "Alignment case study",
         url: "https://github.com/danielis1975/mira-alignment-case-study",

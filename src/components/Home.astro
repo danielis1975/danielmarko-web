@@ -4,6 +4,7 @@ import { projects, content } from "../data/projects";
 import { t, type Lang } from "../i18n";
 import ProjectCard from "./ProjectCard.astro";
 import HeroVideo from "./HeroVideo.astro";
+import Quotes from "./Quotes.astro";
 import danielPhoto from "../assets/daniel.webp";
 
 interface Props {
@@ -105,6 +106,9 @@ const heroStats =
     title={lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
   />
 </section>
+
+<!-- ============ QUOTES ============ -->
+<Quotes lang={lang} />
 
 <!-- ============ PROJECTS ============ -->
 <section id="projects" class="mx-auto max-w-5xl scroll-mt-20 px-5 py-20">

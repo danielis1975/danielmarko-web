@@ -179,6 +179,51 @@ a {
   border: 0;
 }
 
+/* Prose (rendered transcript markdown) */
+.prose {
+  max-width: 46rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.prose h1 {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 2.4rem 0 0.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--color-line);
+}
+.prose p {
+  margin: 0.85rem 0;
+}
+.prose hr {
+  display: none;
+}
+.prose ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.2rem;
+}
+.prose li {
+  margin: 0.2rem 0;
+}
+.prose strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  margin: 1rem 0;
+  padding-left: 1rem;
+  color: var(--color-muted);
+}
+
 /* Reveal-on-scroll */
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }

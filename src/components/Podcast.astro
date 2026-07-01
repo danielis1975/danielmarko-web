@@ -1,0 +1,67 @@
+---
+import HeroVideo from "./HeroVideo.astro";
+import { localizePath, type Lang } from "../i18n";
+import { Content as EnContent } from "../podcast/en.md";
+import { Content as SkContent } from "../podcast/sk.md";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const Content = lang === "sk" ? SkContent : EnContent;
+const otherHref = localizePath("/mira/podcast", lang === "sk" ? "en" : "sk");
+---
+
+<section class="grain relative overflow-hidden border-b border-line">
+  <div class="aurora" aria-hidden="true">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+  </div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 pb-10 pt-12">
+    <a
+      href={localizePath("/mira", lang)}
+      class="text-sm text-muted transition-colors hover:text-ink"
+      >← {lang === "sk" ? "Späť na Miru" : "Back to Mira"}</a
+    >
+    <div class="mt-6 flex items-center gap-3">
+      <span
+        class="flex h-11 w-11 items-center justify-center rounded-2xl text-xl text-white shadow-lg"
+        style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)">✦</span
+      >
+      <div>
+        <h1 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          {lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
+        </h1>
+        <p class="text-sm text-muted">
+          {
+            lang === "sk"
+              ? "Rozhovor o symbiotickej AI — video + celý prepis"
+              : "A conversation about symbiotic AI — video + full transcript"
+          }
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-5xl px-5 py-10">
+  <HeroVideo
+    id="wdhKs--HVfs"
+    title={lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
+  />
+</section>
+
+<section class="mx-auto max-w-5xl px-5 pb-20">
+  <div class="mb-6 flex items-center justify-between gap-4">
+    <h2 class="font-display text-2xl font-semibold tracking-tight">
+      {lang === "sk" ? "Prepis" : "Transcript"}
+    </h2>
+    <a
+      href={otherHref}
+      class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent"
+      >{lang === "sk" ? "EN" : "SK"}</a
+    >
+  </div>
+  <article class="prose">
+    <Content />
+  </article>
+</section>
