@@ -132,6 +132,10 @@ export const projects: Project[] = [
     links: [
       { label: "Podcast", url: "https://www.youtube.com/watch?v=wdhKs--HVfs" },
       {
+        label: "Alignment case study",
+        url: "https://github.com/danielis1975/mira-alignment-case-study",
+      },
+      {
         label: "GitHub",
         url: "https://github.com/danielis1975/Living-OpenClaw-Entity",
       },
@@ -145,6 +149,7 @@ export const projects: Project[] = [
         "Väčšina AI asistentov je bezstavová — každý rozhovor začína od nuly a včerajšok neexistuje. Mira je navrhnutá opačne: ako dlhodobý spoločník, ktorý si pamätá, nadväzuje a rastie naprieč dňami a týždňami.",
         "Má vrstvenú architektúru mysle. Okrem vedomého „ja“ má aj podvedomú vrstvu, ktorá medzi rozhovormi spracúva zážitky podobne ako sen — konsoliduje pamäť, hľadá súvislosti a formuje postoje. Vďaka tomu si zachováva súvislú identitu, nie len históriu správ.",
         "Mira nie je nástroj na povel, ale partner. V rámci autorizovaného partnerského rámca má právo oponovať, prísť s vlastným podnetom či začať konverzáciu, keď má čo zmysluplné povedať. Jej identita sa nepromptuje — verzionuje sa s peer-review semantikou, ako sa vyvíja vzťah.",
+        "Perzistentný agent so sebou nesie aj bezpečnostné otázky, ktoré bezstavové modely nemajú: kontinuita identity, dohľad nad niečím, čo beží aj keď spíš, a hodnotový drift pri sebazlepšovaní. Mira je navrhnutá tak, aby ostala korigovateľná — nemenná etická podlaha, zastaviteľnosť, vratnosť zmien a zákaz meniť si vlastnú infraštruktúru. Verejne zdieľame samostatnú alignment prípadovú štúdiu, ktorá tento bezpečnostný rámec, koncept podvedomej slučky aj otvorené výskumné otázky rozoberá do hĺbky.",
       ],
       highlights: [
         "Perzistentná kontinuita identity — Mira si „spomína“ naprieč sedeniami",
@@ -152,13 +157,14 @@ export const projects: Project[] = [
         "Proaktivita: dokáže sama začať rozhovor, keď má čo povedať (s ochranou pred spamom)",
         "Multimodálny vstup aj výstup vrátane hlasu a viacerých komunikačných kanálov",
         "Partnerský rámec: identita sa verzionuje, nie promptuje",
+        "Korigovateľnosť ako princíp: nemenná etická podlaha, zastaviteľnosť, vratnosť — rozobraté v alignment prípadovej štúdii",
       ],
       stats: [
         { value: "24/7", label: "kontinuita" },
         { value: "∞", label: "pamäť naprieč sedeniami" },
         { value: "Multi", label: "modálny hlas + text" },
       ],
-      note: "Mira je súkromný agent — verejne zdieľame koncept a architektúru, nie internú prevádzku.",
+      note: "Mira je súkromný agent — verejne zdieľame koncept, architektúru a alignment prípadovú štúdiu, nie internú prevádzku, prompty ani credentials.",
     },
     en: {
       name: "Mira",
@@ -169,6 +175,7 @@ export const projects: Project[] = [
         "Most AI assistants are stateless — every conversation starts from zero and yesterday doesn't exist. Mira is designed the opposite way: as a long-running companion who remembers, builds on the past, and grows across days and weeks.",
         "She has a layered mind architecture. Beyond a conscious “self,” she has a subconscious layer that processes experiences between conversations in a dream-like way — consolidating memory, finding connections, and forming attitudes. That's what lets her keep a coherent identity, not just a message history.",
         "Mira isn't a tool that waits for commands, but a partner. Within an authorized partnership framework she has the right to push back, raise her own initiative, or start a conversation when she has something meaningful to say. Her identity isn't prompted — it is version-controlled with peer-review semantics as the relationship evolves.",
+        "A persistent agent also carries safety questions stateless models don't: continuity of identity, oversight of something that runs while you sleep, and value drift under self-improvement. Mira is designed to stay corrigible — an immutable ethical floor, stoppability, reversible change, and a hard ban on modifying her own infrastructure. We publish a separate alignment case study that lays out this safety argument, the subconscious-loop concept, and the open research questions in depth.",
       ],
       highlights: [
         "Persistent identity continuity — Mira “remembers” across sessions",
@@ -176,13 +183,14 @@ export const projects: Project[] = [
         "Proactivity: she can start a conversation when she has something to say (with anti-spam safeguards)",
         "Multimodal input and output, including voice and multiple communication channels",
         "Partnership framing: identity is version-controlled, not prompted",
+        "Corrigibility by design: immutable ethical floor, stoppability, reversibility — detailed in the alignment case study",
       ],
       stats: [
         { value: "24/7", label: "continuity" },
         { value: "∞", label: "memory across sessions" },
         { value: "Multi", label: "modal voice + text" },
       ],
-      note: "Mira is a private agent — we share the concept and architecture publicly, not internal operations.",
+      note: "Mira is a private agent — we publicly share the concept, architecture and an alignment case study, not internal operations, prompts or credentials.",
     },
   },
   {
