@@ -8,83 +8,156 @@ interface Props {
 }
 const { lang } = Astro.props;
 const tr = t(lang);
+
+const liveCount = projects.filter((p) => content(p, lang).status.match(/live/i)).length;
+const heroStats =
+  lang === "sk"
+    ? [
+        { value: String(projects.length), label: "projektov" },
+        { value: "AI", label: "+ dlhovekosť" },
+        { value: "2000→", label: "rokov výskumu" },
+      ]
+    : [
+        { value: String(projects.length), label: "projects" },
+        { value: "AI", label: "+ longevity" },
+        { value: "2000→", label: "years of research" },
+      ];
 ---
 
-<!-- Hero -->
-<section class="max-w-5xl mx-auto px-5 pt-20 pb-12">
-  <p class="text-sm font-semibold uppercase tracking-widest text-accent">
-    Daniel Marko
-  </p>
-  <h1
-    class="mt-3 text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.05]"
-  >
-    {lang === "sk" ? "AI, zdravie a dlhovekosť." : "AI, health & longevity."}
-  </h1>
-  <p class="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-    {tr("home.intro")}
-  </p>
-  <div class="mt-8 flex flex-wrap gap-3">
-    <a
-      href="#projects"
-      class="px-5 py-2.5 rounded-full bg-ink text-white font-semibold text-sm hover:opacity-90 transition-opacity"
-      >{tr("home.projectsTitle")}</a
-    >
-    <a
-      href="#contact"
-      class="px-5 py-2.5 rounded-full border border-black/15 font-semibold text-sm hover:border-accent hover:text-accent transition-colors"
-      >{tr("nav.contact")}</a
-    >
+<!-- ============ HERO ============ -->
+<section class="relative grain overflow-hidden">
+  <div class="aurora" aria-hidden="true">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
   </div>
-</section>
 
-<!-- Projects -->
-<section id="projects" class="max-w-5xl mx-auto px-5 py-12 scroll-mt-20">
-  <h2 class="text-2xl font-bold tracking-tight">{tr("home.projectsTitle")}</h2>
-  <p class="mt-1 text-muted">{tr("home.projectsLead")}</p>
-  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      projects.map((p) => {
-        const c = content(p, lang);
-        return (
-          <ProjectCard
-            lang={lang}
-            slug={p.slug}
-            name={c.name}
-            tagline={c.tagline}
-            status={c.status}
-            accent={p.accent}
-          />
-        );
-      })
-    }
-  </div>
-</section>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 pb-16 pt-24 sm:pt-32">
+    <p class="reveal text-sm font-semibold uppercase tracking-[0.2em] text-muted">
+      Daniel Marko
+    </p>
+    <h1
+      class="reveal mt-4 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl"
+      style="animation-delay:80ms"
+    >
+      {lang === "sk" ? "Umelá inteligencia," : "Artificial intelligence,"}
+      <br class="hidden sm:block" />
+      <span
+        class="bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-2)] bg-clip-text text-transparent"
+        >{lang === "sk" ? "zdravie a dlhovekosť." : "health & longevity."}</span
+      >
+    </h1>
+    <p
+      class="reveal mt-6 max-w-2xl text-lg leading-relaxed text-muted"
+      style="animation-delay:160ms"
+    >
+      {tr("home.intro")}
+    </p>
 
-<!-- About -->
-<section id="about" class="max-w-5xl mx-auto px-5 py-12 scroll-mt-20">
-  <h2 class="text-2xl font-bold tracking-tight">{tr("home.aboutTitle")}</h2>
-  <p class="mt-4 max-w-3xl text-muted leading-relaxed">
-    {
-      lang === "sk"
-        ? "Som Daniel Marko — pracujem na priesečníku umelej inteligencie, zdravia a dlhovekosti. Staviam personalizované AI systémy (Newagy), perzistentných symbiotických agentov (Mira) a skúmam základy poznania (HAI). Verím, že technológia má slúžiť dlhšiemu, zdravšiemu a vedomejšiemu životu."
-        : "I'm Daniel Marko — working at the intersection of artificial intelligence, health, and longevity. I build personalized AI systems (Newagy), persistent symbiotic agents (Mira), and research the foundations of cognition (HAI). I believe technology should serve a longer, healthier, and more conscious life."
-    }
-  </p>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="max-w-5xl mx-auto px-5 py-12 scroll-mt-20">
-  <div
-    class="rounded-3xl bg-ink text-white p-8 sm:p-12 flex flex-col sm:flex-row sm:items-center justify-between gap-6"
-  >
-    <div>
-      <h2 class="text-2xl font-bold tracking-tight">{tr("home.contactTitle")}</h2>
-      <p class="mt-2 text-white/70 max-w-md">{tr("home.contactLead")}</p>
+    <div
+      class="reveal mt-9 flex flex-wrap items-center gap-3"
+      style="animation-delay:240ms"
+    >
+      <a
+        href="#projects"
+        class="rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+        >{tr("home.projectsTitle")} →</a
+      >
+      <a
+        href="#contact"
+        class="rounded-full border border-line bg-white/60 px-6 py-3 text-sm font-semibold backdrop-blur transition-colors hover:border-ink"
+        >{tr("nav.contact")}</a
+      >
     </div>
-    <a
-      href="mailto:dano.marko@gmail.com"
-      class="shrink-0 px-6 py-3 rounded-full bg-white text-ink font-semibold text-sm hover:opacity-90 transition-opacity"
-      >dano.marko@gmail.com</a
+
+    <!-- hero stats -->
+    <div
+      class="reveal mt-14 flex flex-wrap gap-x-12 gap-y-6 border-t border-line pt-8"
+      style="animation-delay:320ms"
     >
+      {
+        heroStats.map((s) => (
+          <div>
+            <div class="font-display text-3xl font-semibold">{s.value}</div>
+            <div class="text-sm text-muted">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="mx-auto max-w-5xl scroll-mt-20 px-5 py-20">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+        {tr("home.projectsTitle")}
+      </h2>
+      <p class="mt-2 text-muted">{tr("home.projectsLead")}</p>
+    </div>
+  </div>
+
+  <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {projects.map((p, i) => <ProjectCard lang={lang} project={p} index={i} />)}
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="scroll-mt-20 border-y border-line bg-card">
+  <div class="mx-auto grid max-w-5xl gap-10 px-5 py-20 md:grid-cols-[1fr_1.4fr]">
+    <div>
+      <h2 class="font-display text-3xl font-semibold tracking-tight">
+        {tr("home.aboutTitle")}
+      </h2>
+      <div class="mt-6 flex gap-3">
+        <span
+          class="h-2.5 w-2.5 animate-pulse rounded-full"
+          style="background:var(--color-accent-2)"></span>
+        <span class="text-sm text-muted"
+          >{lang === "sk" ? "Otvorený spolupráci" : "Open to collaboration"}</span
+        >
+      </div>
+    </div>
+    <div class="space-y-5 text-lg leading-relaxed">
+      <p>
+        {
+          lang === "sk"
+            ? "Som Daniel Marko — pracujem na priesečníku umelej inteligencie, zdravia a dlhovekosti. Staviam personalizované AI systémy, perzistentných symbiotických agentov a skúmam samotné základy poznania."
+            : "I'm Daniel Marko — working at the intersection of artificial intelligence, health, and longevity. I build personalized AI systems, persistent symbiotic agents, and research the very foundations of cognition."
+        }
+      </p>
+      <p class="text-muted">
+        {
+          lang === "sk"
+            ? "Verím, že technológia má slúžiť dlhšiemu, zdravšiemu a vedomejšiemu životu — od každodenného rytmu tela až po kontinuitu mysle."
+            : "I believe technology should serve a longer, healthier, and more conscious life — from the body's daily rhythm to the continuity of the mind."
+        }
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="mx-auto max-w-5xl scroll-mt-20 px-5 py-20">
+  <div
+    class="grain relative overflow-hidden rounded-[2rem] bg-ink px-8 py-14 text-white sm:px-14"
+  >
+    <div class="aurora opacity-40" aria-hidden="true">
+      <span class="b1"></span><span class="b2"></span>
+    </div>
+    <div
+      class="relative z-10 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center"
+    >
+      <div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          {tr("home.contactTitle")}
+        </h2>
+        <p class="mt-3 max-w-md text-white/70">{tr("home.contactLead")}</p>
+      </div>
+      <a
+        href="mailto:dano.marko@gmail.com"
+        class="shrink-0 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
+        >dano.marko@gmail.com</a
+      >
+    </div>
   </div>
 </section>
