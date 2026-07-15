@@ -1,0 +1,59 @@
+---
+import { responses } from "../data/responses";
+import type { Lang } from "../i18n";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const sk = lang === "sk";
+---
+
+<section id="responses" class="mx-auto max-w-5xl scroll-mt-20 px-5 pb-20">
+  <div class="prose mb-6">
+    <h2 class="font-display text-2xl font-semibold tracking-tight">
+      {sk ? "Reakcie" : "Responses"}
+    </h2>
+  </div>
+
+  {
+    responses.map((r) => (
+      <article
+        class:list={[
+          "mb-5 rounded-2xl border p-6",
+          r.pinned ? "border-accent/40 bg-card" : "border-line bg-card",
+        ]}
+      >
+        <header class="mb-3 flex items-center gap-3">
+          <span
+            class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm text-white"
+            style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)"
+          >
+            {r.glyph}
+          </span>
+          <div class="min-w-0">
+            <p class="font-display font-semibold leading-tight">
+              {r.author}
+              <span class="ml-2 text-sm font-normal text-muted">
+                {sk ? r.role.sk : r.role.en}
+              </span>
+            </p>
+            <p class="text-xs text-muted">
+              <time datetime={r.date}>{r.date}</time>
+              {r.pinned && (
+                <span class="ml-2 rounded-full border border-line px-2 py-0.5 uppercase tracking-wide">
+                  {sk ? "Autor stránky" : "Site author"}
+                </span>
+              )}
+            </p>
+          </div>
+        </header>
+        <div class="prose">
+          {(sk ? r.body.sk : r.body.en).map((p) => (
+            <p set:html={p} />
+          ))}
+        </div>
+      </article>
+    ))
+  }
+</section>

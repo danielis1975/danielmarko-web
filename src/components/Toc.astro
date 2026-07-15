@@ -1,0 +1,83 @@
+---
+import type { Lang } from "../i18n";
+
+export interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  lang: Lang;
+}
+const { headings, lang } = Astro.props;
+const sk = lang === "sk";
+
+/** Chapter headings carry a trailing timestamp, e.g. "3. … [2:28]". */
+const chapters = headings
+  .filter((h) => h.depth === 2)
+  .map((h) => {
+    const m = h.text.match(/^(.*?)\s*\[([\d:]+)\]\s*$/);
+    return {
+      slug: h.slug,
+      label: (m ? m[1] : h.text).trim(),
+      time: m ? m[2] : null,
+    };
+  });
+---
+
+{
+  chapters.length > 0 && (
+    <details class="toc group rounded-2xl border border-line bg-card">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4">
+        <span>
+          <span class="block text-xs uppercase tracking-widest text-muted">
+            {sk ? "Obsah" : "Contents"}
+          </span>
+          <span class="block font-display font-semibold">
+            {sk
+              ? `${chapters.length} kapitol`
+              : `${chapters.length} chapters`}
+          </span>
+        </span>
+        <span class="chev shrink-0 text-muted" aria-hidden="true">
+          ▾
+        </span>
+      </summary>
+      <ol class="border-t border-line px-5 py-3">
+        {chapters.map((c) => (
+          <li class="border-b border-line/60 last:border-0">
+            <a
+              href={`#${c.slug}`}
+              class="flex items-baseline gap-3 py-2 text-sm transition-colors hover:text-accent"
+            >
+              <span class="min-w-[3.2rem] shrink-0 tabular-nums text-xs text-muted">
+                {c.time}
+              </span>
+              <span>{c.label}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </details>
+  )
+}
+
+<style>
+  .toc summary::-webkit-details-marker {
+    display: none;
+  }
+  .toc .chev {
+    transition: transform 0.2s ease;
+  }
+  .toc[open] .chev {
+    transform: rotate(180deg);
+  }
+  .toc ol {
+    counter-reset: none;
+    list-style: none;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+</style>

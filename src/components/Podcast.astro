@@ -1,10 +1,11 @@
 ---
 import HeroVideo from "./HeroVideo.astro";
+import Toc from "./Toc.astro";
 import { localizePath, type Lang } from "../i18n";
-import { Content as Ep1En } from "../podcast/ep1-en.md";
-import { Content as Ep1Sk } from "../podcast/ep1-sk.md";
-import { Content as Ep2En } from "../podcast/ep2-en.md";
-import { Content as Ep2Sk } from "../podcast/ep2-sk.md";
+import * as Ep1En from "../podcast/ep1-en.md";
+import * as Ep1Sk from "../podcast/ep1-sk.md";
+import * as Ep2En from "../podcast/ep2-en.md";
+import * as Ep2Sk from "../podcast/ep2-sk.md";
 import { episodes, type EpisodeId } from "../data/podcast";
 
 interface Props {
@@ -17,7 +18,9 @@ const bodies = {
   ep1: { en: Ep1En, sk: Ep1Sk },
   ep2: { en: Ep2En, sk: Ep2Sk },
 } as const;
-const Content = bodies[episode][lang];
+const body = bodies[episode][lang];
+const Content = body.Content;
+const headings = body.getHeadings();
 
 const ep = episodes.find((e) => e.id === episode)!;
 const other = episodes.find((e) => e.id !== episode)!;
@@ -103,6 +106,9 @@ const sk = lang === "sk";
       class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent"
       >{sk ? "EN" : "SK"}</a
     >
+  </div>
+  <div class="mb-8">
+    <Toc headings={headings} lang={lang} />
   </div>
   <article class="prose">
     <Content />

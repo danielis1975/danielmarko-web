@@ -1,5 +1,6 @@
 ---
 import { localizePath, type Lang } from "../i18n";
+import Responses from "./Responses.astro";
 import { Content as EnContent } from "../analysis/en.md";
 import { Content as SkContent } from "../analysis/sk.md";
 
@@ -74,3 +75,5 @@ const sk = lang === "sk";
     <Content />
   </article>
 </section>
+
+<Responses lang={lang} />
