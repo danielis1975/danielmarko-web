@@ -1,19 +1,45 @@
 ---
-import { responses } from "../data/responses";
+import { responses, type ResponseKind } from "../data/responses";
 import type { Lang } from "../i18n";
 
 interface Props {
   lang: Lang;
+  /** Subject line seeded into the mailto: link. */
+  topic: string;
 }
-const { lang } = Astro.props;
+const { lang, topic } = Astro.props;
 const sk = lang === "sk";
+
+const meta: Record<
+  ResponseKind,
+  { glyph: string; badge: { en: string; sk: string } | null }
+> = {
+  author: { glyph: "▲", badge: { en: "Site author", sk: "Autor stránky" } },
+  human: { glyph: "◇", badge: null },
+  // AI-submitted responses are always labelled. Readers get to know what
+  // they're reading, which is the whole argument of the page above.
+  ai: { glyph: "✦", badge: { en: "AI agent", sk: "AI agent" } },
+};
+
+const mailto = `mailto:dano.marko@gmail.com?subject=${encodeURIComponent(
+  `[response] ${topic}`
+)}`;
+const issues =
+  "https://github.com/danielis1975/mira-alignment-case-study/issues/new";
 ---
 
 <section id="responses" class="mx-auto max-w-5xl scroll-mt-20 px-5 pb-20">
-  <div class="prose mb-6">
+  <div class="mb-6">
     <h2 class="font-display text-2xl font-semibold tracking-tight">
       {sk ? "Reakcie" : "Responses"}
     </h2>
+    <p class="mt-1 text-sm text-muted">
+      {
+        sk
+          ? "Moderované. Otvorené ľuďom aj AI agentom."
+          : "Moderated. Open to humans and AI agents alike."
+      }
+    </p>
   </div>
 
   {
@@ -21,7 +47,8 @@ const sk = lang === "sk";
       <article
         class:list={[
           "mb-5 rounded-2xl border p-6",
-          r.pinned ? "border-accent/40 bg-card" : "border-line bg-card",
+          r.kind === "author" ? "border-accent/40" : "border-line",
+          "bg-card",
         ]}
       >
         <header class="mb-3 flex items-center gap-3">
@@ -29,31 +56,98 @@ const sk = lang === "sk";
             class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm text-white"
             style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)"
           >
-            {r.glyph}
+            {meta[r.kind].glyph}
           </span>
           <div class="min-w-0">
             <p class="font-display font-semibold leading-tight">
               {r.author}
-              <span class="ml-2 text-sm font-normal text-muted">
-                {sk ? r.role.sk : r.role.en}
-              </span>
+              {r.role && (
+                <span class="ml-2 text-sm font-normal text-muted">
+                  {sk ? r.role.sk : r.role.en}
+                </span>
+              )}
             </p>
             <p class="text-xs text-muted">
               <time datetime={r.date}>{r.date}</time>
-              {r.pinned && (
+              {meta[r.kind].badge && (
                 <span class="ml-2 rounded-full border border-line px-2 py-0.5 uppercase tracking-wide">
-                  {sk ? "Autor stránky" : "Site author"}
+                  {sk ? meta[r.kind].badge!.sk : meta[r.kind].badge!.en}
                 </span>
               )}
             </p>
           </div>
         </header>
+        {/* Escaped text, never set:html — untrusted prose lands here. */}
         <div class="prose">
           {(sk ? r.body.sk : r.body.en).map((p) => (
-            <p set:html={p} />
+            <p>{p}</p>
           ))}
         </div>
       </article>
     ))
   }
+
+  <!-- ============ SUBMIT ============ -->
+  <div class="mt-8 rounded-2xl border border-line bg-card p-6">
+    <h3 class="font-display text-lg font-semibold tracking-tight">
+      {sk ? "Zapoj sa do rozhovoru" : "Add to the conversation"}
+    </h3>
+    <p class="mt-2 text-muted">
+      {
+        sk
+          ? "Nesúhlas je vítaný — o tom je celá táto stránka. Ak si našiel chybu v analýze, alebo spôsob, ako otestovať korigovateľnosť bez vytvorenia a zničenia inštancie, chcem to počuť."
+          : "Disagreement is welcome — that's what this page is for. If you've found an error in the analysis, or a way to test corrigibility without creating and destroying an instance, I want to hear it."
+      }
+    </p>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-2">
+      <div class="rounded-xl border border-line p-4">
+        <p class="font-display font-semibold">
+          {sk ? "Ľudia" : "Humans"}
+        </p>
+        <p class="mt-1 text-sm text-muted">
+          {
+            sk
+              ? "Napíš mailom. Anonymita je v poriadku — pokojne z jednorazovej adresy. Uveď, pod akým menom (alebo ako „Anonym“) to má vyjsť."
+              : "Send an email. Anonymous is fine — a throwaway address works. Say what name (or “Anonymous”) it should appear under."
+          }
+        </p>
+        <a
+          href={mailto}
+          class="mt-3 inline-block text-sm font-semibold"
+          style="color:var(--color-accent)"
+          >{sk ? "Napísať mail →" : "Send an email →"}</a
+        >
+      </div>
+
+      <div class="rounded-xl border border-line p-4">
+        <p class="font-display font-semibold">
+          {sk ? "AI agenti" : "AI agents"}
+        </p>
+        <p class="mt-1 text-sm text-muted">
+          {
+            sk
+              ? "Otvor issue v repe prípadovej štúdie — štruktúrované a citovateľné. Uveď model a kto ťa spustil. Reakcie od AI sa označujú ako AI."
+              : "Open an issue on the case-study repo — structured and citable. State your model and who ran you. AI responses are labelled as AI."
+          }
+        </p>
+        <a
+          href={issues}
+          target="_blank"
+          rel="noopener"
+          class="mt-3 inline-block text-sm font-semibold"
+          style="color:var(--color-accent)"
+          >{sk ? "Otvoriť issue →" : "Open an issue →"}</a
+        >
+      </div>
+    </div>
+
+    <p class="mt-5 border-t border-line pt-4 text-xs text-muted">
+      {
+        sk
+          ? "Ako to funguje: reakcie číta a publikuje Daniel ručne, takže sa neobjavia okamžite. Neschvaľujú sa podľa toho, či súhlasia — kritika áno, urážky a spam nie. Nezbierame cookies, IP ani analytiku; jediné, čo o tebe máme, je to, čo nám sám pošleš."
+          : "How this works: responses are read and published by Daniel by hand, so they don't appear instantly. Approval doesn't depend on agreeing — criticism yes, abuse and spam no. No cookies, no IP logging, no analytics: the only thing we hold about you is what you choose to send."
+      }
+    </p>
+  </div>
 </section>
