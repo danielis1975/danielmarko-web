@@ -1,15 +1,32 @@
 ---
 import HeroVideo from "./HeroVideo.astro";
 import { localizePath, type Lang } from "../i18n";
-import { Content as EnContent } from "../podcast/en.md";
-import { Content as SkContent } from "../podcast/sk.md";
+import { Content as Ep1En } from "../podcast/ep1-en.md";
+import { Content as Ep1Sk } from "../podcast/ep1-sk.md";
+import { Content as Ep2En } from "../podcast/ep2-en.md";
+import { Content as Ep2Sk } from "../podcast/ep2-sk.md";
+import { episodes, type EpisodeId } from "../data/podcast";
 
 interface Props {
   lang: Lang;
+  episode: EpisodeId;
 }
-const { lang } = Astro.props;
-const Content = lang === "sk" ? SkContent : EnContent;
-const otherHref = localizePath("/mira/podcast", lang === "sk" ? "en" : "sk");
+const { lang, episode } = Astro.props;
+
+const bodies = {
+  ep1: { en: Ep1En, sk: Ep1Sk },
+  ep2: { en: Ep2En, sk: Ep2Sk },
+} as const;
+const Content = bodies[episode][lang];
+
+const ep = episodes.find((e) => e.id === episode)!;
+const other = episodes.find((e) => e.id !== episode)!;
+const copy = ep[lang];
+const otherCopy = other[lang];
+
+const otherLangHref = localizePath(ep.path, lang === "sk" ? "en" : "sk");
+const otherEpHref = localizePath(other.path, lang);
+const sk = lang === "sk";
 ---
 
 <section class="grain relative overflow-hidden border-b border-line">
@@ -20,7 +37,7 @@ const otherHref = localizePath("/mira/podcast", lang === "sk" ? "en" : "sk");
     <a
       href={localizePath("/mira", lang)}
       class="text-sm text-muted transition-colors hover:text-ink"
-      >← {lang === "sk" ? "Späť na Miru" : "Back to Mira"}</a
+      >← {sk ? "Späť na Miru" : "Back to Mira"}</a
     >
     <div class="mt-6 flex items-center gap-3">
       <span
@@ -28,37 +45,63 @@ const otherHref = localizePath("/mira/podcast", lang === "sk" ? "en" : "sk");
         style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)">✦</span
       >
       <div>
-        <h1 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          {lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
-        </h1>
-        <p class="text-sm text-muted">
-          {
-            lang === "sk"
-              ? "Rozhovor o symbiotickej AI — video + celý prepis"
-              : "A conversation about symbiotic AI — video + full transcript"
-          }
+        <p
+          class="text-xs font-semibold uppercase tracking-widest text-accent"
+        >
+          {copy.kicker}
         </p>
+        <h1
+          class="font-display text-3xl font-semibold tracking-tight sm:text-4xl"
+        >
+          {copy.title}
+        </h1>
+        <p class="text-sm text-muted">{copy.subtitle}</p>
       </div>
     </div>
+    <p class="mt-5 max-w-3xl text-muted">{copy.lead}</p>
   </div>
 </section>
 
 <section class="mx-auto max-w-5xl px-5 py-10">
-  <HeroVideo
-    id="wdhKs--HVfs"
-    title={lang === "sk" ? "Podcast s Mirou" : "Podcast with Mira"}
-  />
+  <HeroVideo id={ep.youtubeId} title={copy.title} lang={ep.audioLang} />
+  <p class="mt-3 text-center text-xs text-muted">
+    {copy.videoNote} · <a
+      class="underline transition-colors hover:text-accent"
+      href={`https://www.youtube.com/watch?v=${ep.youtubeId}`}
+      target="_blank"
+      rel="noopener">{sk ? "Pozrieť na YouTube" : "Watch on YouTube"}</a
+    >
+  </p>
+</section>
+
+<section class="mx-auto max-w-5xl px-5 pb-6">
+  <a
+    href={otherEpHref}
+    class="group flex items-center justify-between gap-4 rounded-2xl border border-line px-5 py-4 transition-colors hover:border-accent"
+  >
+    <span>
+      <span class="block text-xs uppercase tracking-widest text-muted"
+        >{sk ? "Druhý rozhovor" : "The other conversation"}</span
+      >
+      <span class="block font-display font-semibold">{otherCopy.title}</span>
+      <span class="block text-sm text-muted">{otherCopy.subtitle}</span>
+    </span>
+    <span
+      class="shrink-0 text-muted transition-colors group-hover:text-accent"
+      aria-hidden="true">→</span
+    >
+  </a>
 </section>
 
 <section class="mx-auto max-w-5xl px-5 pb-20">
   <div class="mb-6 flex items-center justify-between gap-4">
     <h2 class="font-display text-2xl font-semibold tracking-tight">
-      {lang === "sk" ? "Prepis" : "Transcript"}
+      {sk ? "Prepis" : "Transcript"}
     </h2>
     <a
-      href={otherHref}
+      href={otherLangHref}
       class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent"
-      >{lang === "sk" ? "EN" : "SK"}</a
+      >{sk ? "EN" : "SK"}</a
     >
   </div>
   <article class="prose">

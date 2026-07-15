@@ -2,14 +2,17 @@
 interface Props {
   id: string;
   title: string;
+  /** Spoken language of the recording — sets YouTube caption/UI defaults. */
+  lang?: "sk" | "en";
 }
-const { id, title } = Astro.props;
+const { id, title, lang = "en" } = Astro.props;
 const thumb = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 ---
 
 <div
   class="video-facade rounded-[1.5rem] border border-line bg-ink shadow-2xl shadow-black/20"
   data-yt={id}
+  data-lang={lang}
   role="button"
   tabindex="0"
   aria-label={title}
@@ -36,8 +39,9 @@ const thumb = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
       const id = el.dataset.yt;
       if (!id || el.dataset.loaded) return;
       el.dataset.loaded = "1";
+      const lang = el.dataset.lang || "en";
       const iframe = document.createElement("iframe");
-      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=en&hl=en`;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&cc_load_policy=1&cc_lang_pref=${lang}&hl=${lang}`;
       iframe.allow =
         "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
       iframe.allowFullscreen = true;

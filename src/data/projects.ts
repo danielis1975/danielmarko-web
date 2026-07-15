@@ -131,7 +131,9 @@ export const projects: Project[] = [
     gallery: [mira2, mira3],
     glyph: "✦",
     links: [
-      { label: "Podcast + transcript", url: "/mira/podcast" },
+      { label: "Podcast: The Hard Questions (EN)", url: "/mira/podcast-2" },
+      { label: "Podcast: The First Conversation (SK)", url: "/mira/podcast" },
+      { label: "Independent analysis", url: "/mira/analysis" },
       {
         label: "Alignment case study",
         url: "https://github.com/danielis1975/mira-alignment-case-study",

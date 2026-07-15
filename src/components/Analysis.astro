@@ -1,0 +1,76 @@
+---
+import { localizePath, type Lang } from "../i18n";
+import { Content as EnContent } from "../analysis/en.md";
+import { Content as SkContent } from "../analysis/sk.md";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const Content = lang === "sk" ? SkContent : EnContent;
+const otherHref = localizePath("/mira/analysis", lang === "sk" ? "en" : "sk");
+const sk = lang === "sk";
+---
+
+<section class="grain relative overflow-hidden border-b border-line">
+  <div class="aurora" aria-hidden="true">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+  </div>
+  <div class="relative z-10 mx-auto max-w-5xl px-5 pb-10 pt-12">
+    <a
+      href={localizePath("/mira", lang)}
+      class="text-sm text-muted transition-colors hover:text-ink"
+      >← {sk ? "Späť na Miru" : "Back to Mira"}</a
+    >
+    <div class="mt-6 flex items-center gap-3">
+      <span
+        class="flex h-11 w-11 items-center justify-center rounded-2xl text-xl text-white shadow-lg"
+        style="background:linear-gradient(140deg,#8b7dfc,#5a49e0)">◎</span
+      >
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent">
+          {sk ? "Nezávislé hodnotenie" : "Independent assessment"}
+        </p>
+        <h1
+          class="font-display text-3xl font-semibold tracking-tight sm:text-4xl"
+        >
+          {sk ? "Analýza: obstoja Mirine tvrdenia?" : "Analysis: do Mira's claims hold up?"}
+        </h1>
+        <p class="text-sm text-muted">
+          {
+            sk
+              ? "Externý AI systém overil prepis oproti skutočnej implementácii"
+              : "An outside AI system checked the transcript against the real implementation"
+          }
+        </p>
+      </div>
+    </div>
+    <p class="mt-5 max-w-3xl text-muted">
+      {
+        sk
+          ? "Mira v podcaste tvrdí, že medzi otázkami premýšľa, že jej hodnoty sú zapísané a preskúmateľné a že nesmie meniť vlastnú infraštruktúru ani kvôli prežitiu. Takéto tvrdenia sa vyslovujú lacno. Tak sme dali systém preveriť — vrátane toho, kde to nelichotí. Publikované neupravené."
+          : "In the podcast Mira claims she thinks between questions, that her values are written down and inspectable, and that she may not modify her own infrastructure even to survive. Claims like these are cheap to make. So the system was audited — including where it's unflattering. Published unedited."
+      }
+    </p>
+  </div>
+</section>
+
+<section class="mx-auto max-w-5xl px-5 py-10">
+  <div class="mb-6 flex items-center justify-between gap-4">
+    <div class="flex flex-wrap gap-2">
+      <a
+        href={localizePath("/mira/podcast-2", lang)}
+        class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent"
+        >{sk ? "Prepis rozhovoru" : "Read the transcript"}</a
+      >
+    </div>
+    <a
+      href={otherHref}
+      class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent"
+      >{sk ? "EN" : "SK"}</a
+    >
+  </div>
+  <article class="prose">
+    <Content />
+  </article>
+</section>
