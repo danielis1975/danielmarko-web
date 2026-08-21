@@ -26,6 +26,13 @@ export interface ProjectLink {
   url: string;
 }
 
+export interface FeatureCard {
+  eyebrow: string;
+  title: string;
+  text: string;
+  cta: string;
+}
+
 export interface Stat {
   value: string;
   label: string;
@@ -56,6 +63,8 @@ export interface Project {
   /** Emoji glyph used as a lightweight icon. */
   glyph: string;
   links: ProjectLink[];
+  /** Optional in-site long-form companion piece linked from the detail page. */
+  feature?: { href: string; sk: FeatureCard; en: FeatureCard };
   sk: LocalizedContent;
   en: LocalizedContent;
 }
@@ -272,6 +281,21 @@ export const projects: Project[] = [
     links: [
       { label: "Zenodo (DOI)", url: "https://doi.org/10.5281/zenodo.21464146" },
     ],
+    feature: {
+      href: "/dqc/ladder",
+      sk: {
+        eyebrow: "Popularizačný sprievodca",
+        title: "Kandidátsky rebrík — kam ďalej s DQC",
+        text: "Osem možných pokračovaní programu: falzifikovateľná predpoveď, ktorú rozhodne observatórium Auger, fermiónový zákaz, chýbajúci akčný princíp gravitácie. Každý pojem vysvetlený od nuly — bez potreby fyzikálneho vzdelania.",
+        cta: "Prečítať rebrík",
+      },
+      en: {
+        eyebrow: "A guide for the curious",
+        title: "The candidate ladder — where DQC goes next",
+        text: "Eight possible continuations of the programme: the falsifiable prediction the Auger Observatory will decide, the fermion no-go, gravity's missing action principle. Every concept explained from scratch — no physics background needed.",
+        cta: "Read the ladder",
+      },
+    },
     sk: {
       name: "DQC",
       status: "Publikovaný preprint",

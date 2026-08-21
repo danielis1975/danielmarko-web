@@ -232,3 +232,207 @@ a {
 .reveal {
   animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
+
+/* ── Long-form essay extras (DQC ladder) ─────────────────────── */
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 2.6rem 0 0.2rem;
+}
+.prose h3 + p em {
+  color: var(--color-muted);
+  font-size: 1.02rem;
+}
+.prose h4 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0.1rem 0 0.45rem;
+}
+.prose blockquote {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: var(--color-ink);
+  padding-left: 1.25rem;
+  margin: 1.8rem 0;
+}
+.prose blockquote strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+/* Concept explainer box */
+.prose .concept {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  border-radius: 1rem;
+  padding: 1.1rem 1.3rem 0.4rem;
+  margin: 1.7rem 0;
+  font-size: 0.97rem;
+  line-height: 1.68;
+}
+.prose .concept .concept-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+.prose .concept p {
+  margin: 0 0 0.8rem;
+}
+.prose .concept strong {
+  color: var(--color-ink);
+}
+
+/* Scoreboard list */
+.prose ul.score {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+.prose ul.score li {
+  display: grid;
+  grid-template-columns: minmax(9rem, 13rem) 1fr;
+  gap: 1rem;
+  margin: 0;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+.prose ul.score .val {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-accent-2);
+  letter-spacing: 0.01em;
+}
+@media (max-width: 640px) {
+  .prose ul.score li { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* Cost/value/risk chips */
+.prose p.bilancia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.3rem 0 0.4rem;
+}
+.prose p.bilancia span {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 0.34rem 0.75rem;
+  background: var(--color-card);
+}
+.prose p.bilancia b {
+  color: var(--color-ink);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Inline measured value */
+.prose .m {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--color-accent-2);
+  white-space: nowrap;
+}
+
+/* Figures + hand-drawn SVG diagrams */
+.prose figure {
+  margin: 2rem 0;
+}
+.prose figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: var(--color-card);
+  padding: 0.9rem;
+  color: var(--color-ink);
+}
+.prose figcaption {
+  font-size: 0.87rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  margin-top: 0.6rem;
+}
+.prose figure svg text { font-size: 12px; fill: var(--color-ink); }
+.prose figure svg text.dim { font-size: 11px; fill: var(--color-muted); }
+.prose figure svg text.acc { fill: var(--color-accent); font-weight: 600; }
+.prose figure svg text.acc2 { fill: var(--color-accent-2); font-weight: 600; }
+.prose figure svg text.big { font-size: 13.5px; font-weight: 600; }
+.prose figure svg .bx { fill: var(--color-paper); stroke: currentColor; stroke-width: 1.2; rx: 8; }
+.prose figure svg .bxa { fill: color-mix(in srgb, var(--color-accent) 9%, transparent); stroke: var(--color-accent); stroke-width: 1.5; rx: 8; }
+.prose figure svg .bxd { fill: none; stroke: var(--color-muted); stroke-width: 1.2; stroke-dasharray: 5 4; rx: 8; }
+.prose figure svg .band { fill: color-mix(in srgb, var(--color-accent-2) 11%, transparent); }
+.prose figure svg .w { stroke: currentColor; stroke-width: 1.2; fill: none; }
+.prose figure svg .wd { stroke: var(--color-muted); stroke-width: 1.1; fill: none; stroke-dasharray: 5 4; }
+.prose figure svg .wa { stroke: var(--color-accent); stroke-width: 1.8; fill: none; }
+.prose figure svg .ws { stroke: var(--color-accent-2); stroke-width: 1.8; fill: none; }
+
+/* Comparison table */
+.prose .tablewrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: var(--color-card);
+  margin: 1.8rem 0;
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 620px;
+  font-size: 0.9rem;
+}
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
+}
+.prose th {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.prose tbody tr:last-child td { border-bottom: none; }
+.prose td strong { color: var(--color-ink); }
+
+/* Closing panel + colophon */
+.prose .finale {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+  border-radius: 1rem;
+  padding: 1.6rem 1.6rem 0.8rem;
+  margin: 2.4rem 0 1.5rem;
+}
+.prose .finale h3 { margin-top: 0; font-size: 1.3rem; }
+.prose p.colophon {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-line);
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
