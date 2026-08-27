@@ -145,6 +145,13 @@ A teraz zápletka. Augerove dáta z roku 2022 dávajú limit <span class="m">−
 
 <p class="bilancia"><span>HODNOTA <b>najvyššia — externý rozhodca</b></span><span>CENA <b>~0 € + písanie</b></span><span>RIZIKO <b>malé</b></span></p>
 
+<aside class="concept">
+<span class="concept-tag">Aktualizácia</span>
+<h4>22. august 2026 — táto priečka je vylezená</h4>
+<p>Predikčný článok existuje: úplné odvodenie, znamienko premapované do konvencie experimentu a <em>pre-registrovaná rozhodovacia tabuľka</em> — commitnutá do verejného repozitára projektu <em>pred</em> literatúrnou rešeršou, takže prahy verdiktov sa nedali doladiť podľa najnovších dát. Verejnú časovú pečiatku nesie na Zenode ako <a href="https://doi.org/10.5281/zenodo.22125828" rel="noopener" target="_blank">DOI 10.5281/zenodo.22125828</a>; podanie na arXiv (astro-ph.HE) beží a čaká na endorsement prvoautora.</p>
+<p>Stav hry 2026 podľa rešerše k článku: najnovšie Augerove merania kompozície protónový scenár, ktorý limit z 2022 vyžaduje, čoraz viac <em>znevýhodňujú</em> — predpoveď teda momentálne žije a rozhodujúce per-event meranie kompozície (AugerPrime) je ešte len pred nami. Presne pozícia, na ktorú je pečiatka určená.</p>
+</aside>
+
 ### 2 · Dokončiť lámanie vlny
 
 *Takmer istý zisk za deň práce — fyzika tam je, pokazil sa merací prístroj.*

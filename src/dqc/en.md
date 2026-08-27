@@ -145,6 +145,13 @@ Now the twist. Auger's 2022 data give a limit of <span class="m">−1 × 10⁻�
 
 <p class="bilancia"><span>VALUE <b>highest — an outside referee</b></span><span>COST <b>~€0 + writing</b></span><span>RISK <b>small</b></span></p>
 
+<aside class="concept">
+<span class="concept-tag">Update</span>
+<h4>22 August 2026 — this rung has been climbed</h4>
+<p>The prediction paper exists: full derivation, the sign mapped into the experiment's convention, and a <em>pre-registered decision table</em> — committed to the public project repository <em>before</em> the literature refresh, so the verdict thresholds could not be tuned to the newest data. It is publicly timestamped on Zenodo as <a href="https://doi.org/10.5281/zenodo.22125828" rel="noopener" target="_blank">DOI 10.5281/zenodo.22125828</a>; an arXiv posting (astro-ph.HE) is in progress pending first-author endorsement.</p>
+<p>The 2026 state of play, from the review done for the paper: Auger's newest composition measurements increasingly <em>disfavor</em> the proton scenario that the 2022 limit requires — so the prediction currently lives, and the decisive per-event composition measurement (AugerPrime) is still ahead. Exactly the position a timestamp is for.</p>
+</aside>
+
 ### 2 · Finish the refraction measurement
 
 *A near-certain gain for a day's work — the physics is there, the instrument broke.*
