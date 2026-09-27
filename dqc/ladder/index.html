@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.18.2"><title>The candidate ladder — where DQC goes next | Daniel Marko</title><meta name="description" content="A guide for the curious: eight possible continuations of the DQC programme — the falsifiable Planck-scale prediction, the fermion no-go, the missing action principle — with every concept explained from scratch."><link rel="canonical" href="https://danielmarko.com/dqc/ladder/"><meta property="og:title" content="The candidate ladder — where DQC goes next | Daniel Marko"><meta property="og:description" content="A guide for the curious: eight possible continuations of the DQC programme — the falsifiable Planck-scale prediction, the fermion no-go, the missing action principle — with every concept explained from scratch."><meta property="og:type" content="website"><meta property="og:url" content="https://danielmarko.com/dqc/ladder/"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/_slug_.B2jkvtEV.css"></head> <body class="min-h-screen flex flex-col"> <header class="sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-black/5"> <nav class="max-w-5xl mx-auto px-5 h-16 flex items-center justify-between gap-4"> <a href="/" class="font-extrabold tracking-tight text-lg">
+Daniel<span style="color:var(--color-accent)">Marko</span> </a> <div class="flex items-center gap-5 text-sm font-medium"> <a href="/#projects" class="hover:text-accent transition-colors">Projects</a> <a href="/mini-course" class="font-semibold transition-colors hover:text-accent" style="color:var(--color-accent)">Free course</a> <a href="/#about" class="hidden hover:text-accent transition-colors sm:inline">About</a> <a href="/#contact" class="hover:text-accent transition-colors">Contact</a> <a href="/sk/dqc/ladder" class="px-2.5 py-1 rounded-full border border-black/10 text-xs uppercase tracking-wide hover:border-accent hover:text-accent transition-colors" aria-label="Switch to sk"> sk </a> </div> </nav> </header> <main class="flex-1">  <section class="grain relative overflow-hidden border-b border-line"> <div class="absolute inset-0 z-0 opacity-[0.13]" style="background:linear-gradient(140deg,#4f46e5,#0891b2)" aria-hidden="true"></div> <div class="relative z-10 mx-auto max-w-5xl px-5 pb-10 pt-12"> <a href="/dqc" class="text-sm text-muted transition-colors hover:text-ink">← Back to DQC</a> <div class="mt-6 flex items-center gap-3"> <span class="flex h-11 w-11 items-center justify-center rounded-2xl text-xl text-white shadow-lg" style="background:linear-gradient(140deg,#4f46e5,#0891b2)">⚛</span> <div> <p class="text-xs font-semibold uppercase tracking-widest text-accent"> A guide for the curious </p> <h1 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl"> The candidate ladder </h1> <p class="text-sm text-muted"> Where DQC goes next — eight possible continuations, explained from scratch </p> </div> </div> <p class="mt-5 max-w-3xl text-muted"> A small home research programme is testing whether the universe could, at its deepest layer, be a vast computing machine. This page explains — from first principles, no physics background needed — where it can go from here, what each step would mean, and what it is worth. </p> <p class="mt-3 text-xs text-muted"> State as of 22 August 2026 · compiled from the project journal · all figures from pre-registered runs </p> </div> </section> <section class="mx-auto max-w-5xl px-5 py-10"> <div class="mb-6 flex items-center justify-between gap-4"> <div class="flex flex-wrap gap-2"> <a href="https://doi.org/10.5281/zenodo.21464146" rel="noopener" target="_blank" class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent">Preprint on Zenodo ↗</a> </div> <a href="/sk/dqc/ladder" class="rounded-full border border-line px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors hover:border-accent hover:text-accent">SK</a> </div> <article class="prose"> <h2 id="part-i--foundations-what-kind-of-machine-is-this">Part I — Foundations: what kind of machine is this</h2>
+<p>Picture an endless sheet of graph paper. Every square holds a single <strong>whole number</strong> — not a physical quantity, not a particle, just a number. And there is one very simple rule that says how each number changes on the next “tick”, based on the numbers in its neighbouring squares. Tick, tick, tick — and out of nothing but that rule, physics is supposed to emerge: waves, particles, mass, gravity, time.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Cellular automaton</h4>
+<p>A grid of cells, each holding a value, all updating at once under one local rule ("look at your neighbours, recompute yourself"). The most famous example is John Conway's Game of Life — three lines of rules produce "creatures" that move, eat and reproduce. DQC is a cellular automaton meant to produce physical laws instead of creatures.</p>
+</aside>
+<p>Why <em>whole</em> numbers? Try computing <code>0.1 + 0.2</code> on a calculator or in any programming language. You get <code>0.30000000000000004</code>. Computers store decimals approximately, and every operation grows that error a little. Ordinary physics simulations live with this — they are <em>approximations</em>. DQC goes the other way: everything is integers, every step is exact, and so every claim can be checked <strong>down to the last bit</strong>. Either it matches precisely, or it doesn’t match at all. No “roughly”.</p>
+<blockquote>
+<p><strong>“Evolution is a permutation of integer microstates, not approximate numerical integration.”</strong></p>
+</blockquote>
+<p>That sentence sounds technical, but it says something simple and radical. A <strong>microstate</strong> is the complete list of all numbers in all cells — a full “photograph” of the world at one tick. And a <strong>permutation</strong> means a rearrangement: the rule never merges two different worlds into one, and never loses a world. Every state has exactly one successor and exactly one predecessor. Like a perfect shuffle of a deck of cards: however long you shuffle, there is always an exact procedure that <em>un-shuffles</em> it.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Bijectivity and reversibility</h4>
+<p>A <em>bijective</em> rule is one that can be uniquely inverted — from the output you can reconstruct the input. The consequence: the automaton's entire universe can be run <em>backwards</em>, and after millions of ticks it lands precisely, bit for bit, in its original state. In DQC this is the harshest correctness test there is: after every experiment the machine is rewound, and if it doesn't return exactly to the start, the experiment is void. Real physics has the same property at the micro level — the fundamental equations are reversible; irreversibility (a broken glass never reassembles) only appears statistically, out of enormous numbers of particles.</p>
+</aside>
+<figure>
+<svg viewBox="0 0 640 200" role="img" aria-label="A row of cells holding integers becomes another row after one tick of the rule; the inverse rule returns exactly the original numbers.">
+  <defs>
+    <marker id="ar1e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <text x="40" y="28" class="dim">state at time t</text>
+  <rect x="40" y="38" width="70" height="42" class="bx"></rect><text x="75" y="65" text-anchor="middle">7</text>
+  <rect x="110" y="38" width="70" height="42" class="bx"></rect><text x="145" y="65" text-anchor="middle">−12</text>
+  <rect x="180" y="38" width="70" height="42" class="bx"></rect><text x="215" y="65" text-anchor="middle">0</text>
+  <rect x="250" y="38" width="70" height="42" class="bx"></rect><text x="285" y="65" text-anchor="middle">3</text>
+  <rect x="320" y="38" width="70" height="42" class="bx"></rect><text x="355" y="65" text-anchor="middle">41</text>
+  <g color="var(--color-accent)"><line x1="200" y1="92" x2="200" y2="124" class="wa" marker-end="url(#ar1e)"></line></g>
+  <text x="216" y="113" class="acc">1 tick — one local rule</text>
+  <text x="40" y="148" class="dim">state at time t+1</text>
+  <rect x="40" y="156" width="70" height="36" class="bx"></rect><text x="75" y="179" text-anchor="middle">−5</text>
+  <rect x="110" y="156" width="70" height="36" class="bx"></rect><text x="145" y="179" text-anchor="middle">8</text>
+  <rect x="180" y="156" width="70" height="36" class="bx"></rect><text x="215" y="179" text-anchor="middle">3</text>
+  <rect x="250" y="156" width="70" height="36" class="bx"></rect><text x="285" y="179" text-anchor="middle">−1</text>
+  <rect x="320" y="156" width="70" height="36" class="bx"></rect><text x="355" y="179" text-anchor="middle">34</text>
+  <g color="var(--color-accent-2)"><path d="M 420 174 C 494 174 494 59 425 59" class="ws" marker-end="url(#ar1e)"></path></g>
+  <text x="470" y="118" class="acc2">run backwards:</text>
+  <text x="470" y="136" class="acc2">exactly back, bit for bit</text>
+</svg>
+<figcaption>The core of the whole project in one picture: the world is a list of integers, evolution is a reversible rearrangement. No rounding, no loss of information — which is why every result can be checked to the last bit.</figcaption>
+</figure>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>The ledger</h4>
+<p>In double-entry bookkeeping money never simply "vanishes" — every movement has a counter-movement and the total balances to the cent. DQC builds its conservation laws the same way: the sum of certain quantities across the whole grid <em>must not change by even one unit</em> over millions of ticks. If the ledger moves by a single bit in an experiment, something is wrong — and exactly these "accounting holes" have repeatedly exposed bugs that would have stayed hidden forever in an approximate simulation.</p>
+</aside>
+<h3 id="the-rules-of-the-game-pre-registration-and-gates">The rules of the game: pre-registration and gates</h3>
+<p>The easiest way to fool yourself in research is to look at the data first and then announce that this is exactly what you expected. So DQC imposed a discipline borrowed from clinical trials: <strong>pre-registration</strong>. Before every experiment it commits in writing (stored in version control with a timestamp) to what exactly will be measured, which number counts as success and which as failure. Those thresholds are called <strong>gates</strong>. It’s as if a footballer publicly wrote down which corner they will shoot at before the penalty — afterwards you can’t claim “that’s what I meant”.</p>
+<p>The consequence of this discipline runs through the whole project journal: <strong>nineteen recorded self-corrections</strong> — moments of saying out loud “this number was wrong, this signal was an artefact of my own measuring instrument, I withdraw this claim.” In popular writing that sounds like weakness; in science it is the opposite. A programme that has never retracted anything probably never measured anything properly.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Emergent vs. implemented — the most important distinction on this page</h4>
+<p>A single water molecule is not wet. "Wetness" <em>emerges</em> from the cooperation of many molecules — that is <strong>emergence</strong>. By contrast, something is <strong>implemented</strong> when you put it in by hand: if you write the rule "there shall be a wave here" directly into the game, it is no miracle that a wave is there.</p>
+<p>DQC guards this distinction more fiercely than anything else. The claim "quantum mechanics <em>emerged</em> in the automaton" may only be used where it has been demonstrated by measurement — and today that is the single-particle sector only. Everywhere else the humbler statement applies: "it is implemented and behaves correctly". A large part of the ladder below is about moving that boundary.</p>
+</aside>
+<h2 id="part-ii--what-the-machine-has-already-shown">Part II — What the machine has already shown</h2>
+<p>To judge where to go next, you need to know where the programme stands. This is the scoreboard — every entry passed pre-registered gates and a bit-exact rewind:</p>
+<ul class="score">
+<li><span class="val">√(1+τ²), within 2 %</span><span><strong>A quantum wave running on integers.</strong> The Schrödinger equation — the basic equation of quantum mechanics, describing how a particle's wave travels and spreads — works exactly in the automaton. Two completely independent integer substrates spread along the same textbook curve.</span></li>
+<li><span class="val">visibility 0.995</span><span><strong>Double-slit interference.</strong> The most famous quantum experiment (a particle "goes through both holes at once" and fringes appear on the screen) came out in the automaton, including the subtleties: the fringes vanish when you "look" at which hole the particle took — and in the automaton a measurement can even be <em>un-measured</em> by rewinding, which no laboratory can do.</span></li>
+<li><span class="val">CHSH 2.79 – 2.83 > 2</span><span><strong>Bell's bound exceeded.</strong> A deterministic machine crossed a line no "ordinary" classical theory can cross (explained at rung 6). Honest caveat: the mechanism is nonlocal guidance in the space of pairs — and part of the apparatus is implemented, not emergent.</span></li>
+<li><span class="val">w₀√(1−v²/c²), within 0.5 %</span><span><strong>A piece of relativity for free.</strong> Objects flying through the automaton contract exactly according to Einstein's length-contraction formula — nobody programmed that in.</span></li>
+<li><span class="val">coeff. 0.0206 vs. theory 0.0208</span><span><strong>The first great no-go survived.</strong> A grid has directions (up, left…), real space does not — the classic argument against a "universe on a lattice". Measurement showed that the automaton's directionality vanishes for long waves at an exactly calculable rate: its world looks blocky up close and perfectly round from a distance.</span></li>
+<li><span class="val">1.000 / 3.143 / 4.872 to 1 %</span><span><strong>The gravity era:</strong> mass behaves in the automaton like "bound tokens", clocks near mass tick measurably differently (to 1.3 %), and waves refract at the boundary between differently ticking clocks — confirmed qualitatively, not yet quantitatively.</span></li>
+<li><span class="val">~US$35</span><span><strong>Total compute cost.</strong> A laptop, occasionally a rented cloud GPU. Less than dinner for two — which is itself an interesting fact about where the frontier of home research now lies.</span></li>
+</ul>
+<p>And one thing the project <em>deliberately does not claim</em>: that the universe <strong>is</strong> such a machine. The word “is” is literally forbidden inside the project — only <em>candidate</em> is allowed. Why, and what would have to happen to change that, is the point of the whole ladder.</p>
+<h2 id="part-iii--the-ladder-eight-possible-continuations">Part III — The ladder: eight possible continuations</h2>
+<p>The rungs are ordered by <em>value per cost</em> — from steps that cost almost nothing and could change everything, to deep and risky questions. For each: what it is, why it is open, how it would run, and what its outcome would mean.</p>
+<h3 id="1--prediction-p2-and-the-hunt-for-cosmic-rays">1 · Prediction P2 and the hunt for cosmic rays</h3>
+<p><em>The one place where someone other than the author decides the project’s fate.</em></p>
+<p>A good scientific theory can be recognised by the fact that it writes its own death sentence: it says <em>“if you measure this, I am dead”</em>. That is <strong>falsifiability</strong>, and it is the most valuable currency a theory can hold. DQC has one such prediction — and it is surprisingly close to being decided.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Dispersion — how a lattice world would give itself away</h4>
+<p>White light through a glass prism spreads into a rainbow, because glass slows each colour differently — blue lags more than red. That effect is called dispersion. In empty, perfectly smooth space there is no dispersion: every colour of light travels at exactly the same speed <span class="m">c</span>.</p>
+<p>But if space is a <em>lattice</em> at the smallest scale, it isn't smooth. Long waves don't notice the squares — an ocean wave doesn't feel the grains of sand on the bottom. Extremely short waves, comparable to the size of a square, do "feel" the lattice and should lag. Very slightly. DQC doesn't get to choose this effect — it falls out of the same rule structure that passed the roundness test, so its size is <em>computed, not tunable</em>: coefficient <span class="m">−3.27 × 10⁻⁴⁰ GeV⁻²</span>, always a slowdown (never a speed-up), growing with the square of the energy.</p>
+</aside>
+<p>A number with forty zeros after the decimal point looks hopelessly unmeasurable. The trick is that the universe runs experiments no accelerator can match: <strong>ultra-high-energy cosmic rays</strong>.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Cosmic rays and the Pierre Auger Observatory</h4>
+<p>Occasionally a single particle arrives from deep space — a proton or an atomic nucleus — carrying the energy of a well-struck tennis ball. One subatomic particle, the energy of a macroscopic object; roughly ten million times more than Earth's largest accelerator can deliver. When it hits the atmosphere it triggers a shower of billions of secondary particles raining down over tens of square kilometres.</p>
+<p>The Pierre Auger Observatory on the Argentine pampas is built for these showers: 1,660 water tanks spread over 3,000 km² catch their traces. It is precisely at such energies that the lattice lag predicted by P2 would become measurable — extreme energy acts as a magnifying glass on the structure of space.</p>
+</aside>
+<p>Now the twist. Auger’s 2022 data give a limit of <span class="m">−1 × 10⁻⁴⁰ GeV⁻²</span> — which is <strong>3.3 times tighter</strong> than DQC predicts. Does that mean the prediction is already refuted? No — and that “no” is the whole game. The limit holds only <em>on the assumption</em> that cosmic rays are mostly protons. If they are heavier nuclei (iron, carbon…), the limit dissolves and the prediction survives. The question “protons or iron?” is called <strong>composition</strong>, and it is one of the major open questions in astroparticle physics — Auger is aiming at it right now with upgraded detectors.</p>
+<figure>
+<svg viewBox="0 0 640 310" role="img" aria-label="Graph of light speed against photon energy: smooth space gives a flat line, DQC a curve dipping at extreme energies; the difference is decided by Auger data depending on cosmic-ray composition.">
+  <defs>
+    <marker id="ar2e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <rect x="470" y="40" width="110" height="190" class="band"></rect>
+  <g color="currentColor">
+    <line x1="70" y1="230" x2="600" y2="230" class="w" marker-end="url(#ar2e)"></line>
+    <line x1="70" y1="230" x2="70" y2="40" class="w" marker-end="url(#ar2e)"></line>
+  </g>
+  <text x="596" y="252" text-anchor="end" class="dim">photon energy →</text>
+  <text x="70" y="30" class="dim">speed</text>
+  <g color="var(--color-muted)"><line x1="70" y1="90" x2="580" y2="90" class="wd"></line></g>
+  <text x="80" y="80" class="dim">smooth space: always exactly c</text>
+  <g color="var(--color-accent)"><path d="M 70 90 C 300 90 420 92 470 104 C 520 116 555 142 580 168" class="wa"></path></g>
+  <text x="296" y="134" class="acc">DQC: short waves "feel" the lattice</text>
+  <text x="296" y="152" class="acc">and lag slightly (∝ energy²)</text>
+  <g color="var(--color-accent-2)"><line x1="470" y1="40" x2="470" y2="230" class="ws" stroke-dasharray="5 4"></line></g>
+  <text x="525" y="58" text-anchor="middle" class="acc2">Auger</text>
+  <text x="525" y="76" text-anchor="middle" class="acc2">window</text>
+  <text x="70" y="285" class="dim">the gap is ~10⁻⁴⁰ — measurable only with the most energetic particles in the universe;</text>
+  <text x="70" y="303" class="dim">the verdict depends on whether cosmic rays are protons (ruled out) or heavy nuclei (survives)</text>
+</svg>
+<figcaption>Prediction P2 in one image. Smooth space and the lattice differ only in the top-right corner of the graph — exactly where the Auger Observatory can see. The curve is computed from the automaton with no free parameters: it cannot be bent after the fact.</figcaption>
+</figure>
+<p><strong>What to do concretely:</strong> write a short standalone paper — the derivation, the sign, and an explicit table of scenarios (“if composition comes out this way, DQC is refuted; if that way, it survives with margin this large”) — and post it with a timestamp on arXiv, the public noticeboard of physics. Then wait for data.</p>
+<p><strong>Its value:</strong> the highest on the ladder, and it is nearly free. The difference between “an interesting simulation” and “a physical theory” is precisely a prediction staked <em>before</em> the measurement, which the author cannot bend. And the position — “3.3× in tension with a conditional limit” — is rare and ideal: close enough to be decided within years, not so far as to be untestable, and not already dead. Crucially: <em>a refutation is a full result too.</em> A clean falsification of an entire class of lattice theories would be a publishable full stop, not an embarrassment.</p>
+<p class="bilancia"><span>VALUE <b>highest — an outside referee</b></span><span>COST <b>~€0 + writing</b></span><span>RISK <b>small</b></span></p>
+<aside class="concept">
+<span class="concept-tag">Update</span>
+<h4>22 August 2026 — this rung has been climbed</h4>
+<p>The prediction paper exists: full derivation, the sign mapped into the experiment's convention, and a <em>pre-registered decision table</em> — committed to the public project repository <em>before</em> the literature refresh, so the verdict thresholds could not be tuned to the newest data. It is publicly timestamped on Zenodo as <a href="https://doi.org/10.5281/zenodo.22125828" rel="noopener" target="_blank">DOI 10.5281/zenodo.22125828</a>; an arXiv posting (astro-ph.HE) is in progress pending first-author endorsement.</p>
+<p>The 2026 state of play, from the review done for the paper: Auger's newest composition measurements increasingly <em>disfavor</em> the proton scenario that the 2022 limit requires — so the prediction currently lives, and the decisive per-event composition measurement (AugerPrime) is still ahead. Exactly the position a timestamp is for.</p>
+</aside>
+<h3 id="2--finish-the-refraction-measurement">2 · Finish the refraction measurement</h3>
+<p><em>A near-certain gain for a day’s work — the physics is there, the instrument broke.</em></p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Snell's law — why a straw looks bent in a glass</h4>
+<p>A straw in water looks broken because light changes direction at the surface. Why? Picture a column of soldiers marching at an angle from tarmac into deep mud: the flank that enters the mud first slows first, and the whole formation swings round. The exact relation between the angle of incidence and the angle of refraction is Snell's law — one of the oldest quantitative laws in physics (1621).</p>
+<p>In DQC the role of the "mud" is played by a region where <em>the clocks tick more slowly</em> — which is deeply related to real gravity: in Einstein's theory light bends around the Sun precisely because time flows differently near mass. (The project's honest note: the automaton's refraction is so far an analogy with a prescribed geometry, not derived gravity — among other things it lacks the famous Einstein factor of 2.)</p>
+</aside>
+<p><strong>What happened:</strong> the two-dimensional experiment had two parts. The <em>binary</em> part — the prediction “above this exact angle the wave stops getting through” — passed cleanly: transmission dropped from <span class="m">0.583</span> to <span class="m">0.045</span> exactly at the computed boundary, with no tuning, twice independently. But the <em>quantitative</em> part (refraction angle to a tenth of a degree) failed — and the post-mortem showed the fault was not in the physics but in the measuring instrument. The software “protractor” had two bugs: it didn’t know the grid wraps around at the edges (so when the wave spilled over, its centre-of-mass calculation broke — and the fix was applied in only one of the two axes), and a fixed measurement window skewed the spreading packet. The diagnosis is complete: an auxiliary “edge leak” metric correlates perfectly with the failures — where the leak was zero, the protractor was accurate to <span class="m">0.01°</span>.</p>
+<p><strong>How it would run:</strong> a short pre-registered rerun with a fixed instrument — circular centre-of-mass in both axes, and separating the reflected wave from the transmitted one by direction of propagation (mathematically clean) rather than by window position. An exploratory run — non-citable, because it wasn’t pre-registered — already showed agreement with Snell to <span class="m">0.3 – 0.5°</span>; the physics is almost certainly waiting there.</p>
+<p><strong>Its value:</strong> consolidating, not discovering — and it should be said plainly: this is a clean-up job. But a cheap and near-certain one. The statement “matter follows geometry quantitatively, parameter-free, under one degree” would upgrade the gravity chapter of the forthcoming paper from “binary confirmation” to a closed result. There’s also a methodological point worth passing on: <em>in this project it is almost exclusively the instrument that has failed, not the world being measured</em> — of the nineteen self-corrections, the overwhelming majority were bugs in the “telescope”, not in the “stars”.</p>
+<p class="bilancia"><span>VALUE <b>closes a chapter</b></span><span>COST <b>~1 day, €0</b></span><span>RISK <b>lowest on the ladder</b></span></p>
+<h3 id="3--an-action-principle--gravitys-missing-engine">3 · An action principle — gravity’s missing engine</h3>
+<p><em>Not another experiment, but the question that unblocks three stuck ones at once.</em></p>
+<p>The project’s gravity era ended strangely: half of the “matter ↔ geometry” loop works beautifully, the other half fails stubbornly — and fails <em>the same way every time</em>. When something breaks identically every time, it isn’t bad luck. It’s a symptom.</p>
+<p>Specifically: the direction “geometry acts on matter” passed (clocks near mass tick differently, waves refract). But every time a force in the opposite direction was tried — “matter curves geometry”, written in as a hand-added rule — the system started <strong>gaining energy out of nothing</strong>. The journal calls it “pumping”. Three different designs, three identical endings. And the one channel that survived is telling: the clock channel — where geometry does not <em>push</em> matter, only changes its rate of time, and therefore does no work at all.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>The action principle — nature as an optimiser</h4>
+<p>A lifeguard on the beach sees someone drowning offshore. They run fast on sand and swim slowly in water — so the quickest route is not a straight line but a bent one: a longer stretch along the beach, a shorter one through water. Light does exactly the same when it refracts at a surface — it "chooses" the path that is quickest.</p>
+<p>It turns out you can write <em>all</em> of physics this way: assign every possible history of events a single number (called the action, a sort of "effort bill"), and nature always takes the path where that bill is stationary — usually smallest. Newton's laws, electromagnetism, Einstein's gravity and quantum field theory are all consequences of one action principle. A theory that has an action gets enormous benefits for free. A theory without one has to police everything by hand.</p>
+</aside>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Noether's theorem — why energy is conserved</h4>
+<p>In 1918 the mathematician Emmy Noether proved a theorem physicists still call the most beautiful in their field: <strong>every symmetry of nature gives birth to one conservation law.</strong> The fact that an experiment turns out the same today as tomorrow (symmetry in time) <em>forces</em> energy to be conserved. That it turns out the same here as a metre away forces momentum to be conserved. Conservation laws are not standalone rules — they are the shadows of symmetries.</p>
+<p>The catch: the theorem only applies to systems derived from an action principle. And there is the diagnosis of DQC's pumping in one sentence: the gravitational couplings were added by hand, without an action — so they had no claim to Noether's protection, and energy leaked through their fingers. <em>Exactly as the theorem predicts.</em> What looked like a series of failures is in fact a consistent message: the engine is missing, not the parts.</p>
+</aside>
+<p><strong>How it would run:</strong> this is the one rung that isn’t an experiment but theoretical work — pencil and paper (and then machine verification). The question: does there exist an integer, local action from which the automaton’s reversible rule <em>falls out</em> as a consequence — with the gravitational coupling as a term in the bill rather than a hand-written addendum? There are encouraging leads: mathematicians know “variational integrators” (discrete rules derived from a discrete action), and the project has already shown once that conservation can be restored in integer arithmetic when division remainders are accounted for rigorously.</p>
+<p><strong>Its value:</strong> leverage. There are three possible outcomes and all three are valuable. (1) Constructive: an action is found → the three stuck gravity gates likely unlock at once and the matter↔geometry loop closes dynamically as well — the largest gravity result the programme could have. (2) A theorem: it is proved that no exact action <em>can</em> exist in this class of rules — a clean negative result in the style of the project’s earlier theorems, also publishable. (3) Partial: an action exists for part of the system → a precise map of where gravity is “allowed to live”. There is no branch in which this work yields nothing.</p>
+<p class="bilancia"><span>VALUE <b>unlocks 3 gates at once</b></span><span>COST <b>~€0 of compute, weeks of thought</b></span><span>RISK <b>only time</b></span></p>
+<h3 id="4--fermions-and-the-doubling-theorem">4 · Fermions and the doubling theorem</h3>
+<p><em>The second most famous “no-go” for lattice worlds — the natural next opponent.</em></p>
+<p>DQC has a proven method: find the strongest mathematical theorem saying <em>“a lattice world cannot do this”</em>, check whether its assumptions apply to the automaton at all — and measure. That is how lattice directionality fell (Part II). Next in line is a far more exotic prohibition, but one of equal standing.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Fermions, bosons and the Pauli principle</h4>
+<p>Every particle in the universe belongs to one of two tribes. <strong>Fermions</strong> (electrons, quarks…) are loners: no two can occupy exactly the same state. That is the Pauli exclusion principle, and it is why matter holds its shape — the electrons in an atom cannot all pile into the lowest shell, so atoms have volume and a chair holds you up. <strong>Bosons</strong> (photons…) are the exact opposite: they love being in the same state — which is why lasers exist, a million photons marching in perfect step. Notably, the automaton already holds the Pauli principle <em>bit-exactly</em> — two fermionic particles have never once met in the same state, not in millions of ticks.</p>
+</aside>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Chirality and the Nielsen–Ninomiya theorem</h4>
+<p>A left and a right glove are mirror images but not the same — you can't put the right one on your left hand. Some particles have this "handedness", called chirality; and nature is surprisingly <em>not</em> mirror-fair: the weak nuclear force (the one driving radioactive decay) sees only left-handed particles. The neutrino exists as a "left glove" with no right-handed partner.</p>
+<p>Enter the 1981 theorem of Nielsen and Ninomiya: <em>on any well-behaved lattice, every left-handed particle necessarily comes with a right-handed twin</em> (so-called fermion doubling). A lattice world therefore shouldn't be able to imitate our universe, which has lefts without rights. After lattice directionality it is the second most-cited argument for "the universe cannot be a lattice" — exactly the kind of wall this project has climbed once before.</p>
+</aside>
+<p><strong>Why DQC has a chance:</strong> the theorem has assumptions in the fine print — and the automaton violates several. It is not a standard “Hermitian” theory but a reversible rearrangement; its two-step internal structure resembles precisely the tricks (splitting a particle across even and odd cells) that lattice physicists use to tame doubling; and the automaton’s local time breaks the assumption of perfect regularity in time. None of this guarantees success — but it means the question is <em>genuinely open</em>, not lost in advance.</p>
+<p><strong>How it would run:</strong> build a Dirac sector in the automaton (the Dirac equation is the quantum equation for fermions — and it has a natural two-component structure that fits an integer two-step even better than Schrödinger’s), then count how many species of particle actually live in it at low energies, and measure whether lefts are born with right-handed twins. All with bit-exact gates as always.</p>
+<p><strong>Its value:</strong> if doubling falls (or the twins decouple at low energies the way directionality did), it is a headline result of the same weight as surviving the first no-go — “second no-go survived”. If it doesn’t fall, an honest map of the boundary emerges: we will <em>know</em> that the road to Standard Model particles doesn’t run this way, saving years of wandering. Bonus: emergent spin will almost certainly come out of this work — the particles’ intrinsic rotation, today implemented by hand, could grow out of topology in the Dirac sector (the automaton has already shown that field “winding” carries a sign of the electromagnetic type).</p>
+<p class="bilancia"><span>VALUE <b>potential headline result</b></span><span>COST <b>largest new design, ~days of work</b></span><span>RISK <b>medium — both branches yield something</b></span></p>
+<h3 id="5--full-relativity-boosts">5 · Full relativity: boosts</h3>
+<p><em>Roundness the machine already has. Now: can a moving observer tell that they are moving?</em></p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Isotropy vs. boosts — two different symmetries</h4>
+<p>What passed the roundness test (Part II) is <strong>isotropy</strong>: the world looks the same <em>in every direction</em>. But Einstein's relativity demands more — <strong>boost invariance</strong>: the world must also look the same <em>to an observer in uniform motion</em>. Galileo illustrated it with the hold of a sailing ship: no matter what experiment you run below deck, you cannot tell whether the ship is moored or sailing. No experiment inside may reveal "absolute rest".</p>
+<p>And here a lattice world has a fundamental problem: the lattice <em>is</em> absolute rest. It has a floor. An observer moving relative to it differs in principle from one at rest. Exact boost symmetry does not exist on a lattice — full stop.</p>
+</aside>
+<p><strong>The only honest route</strong> is therefore emergent, just as with roundness: show that the automaton’s <em>inhabitants</em> — beings and instruments assembled from its low-energy waves — <strong>cannot measure</strong> their own motion relative to the lattice, because all deviations vanish with energy at the same computable rate as directionality did. Relativity would then hold for them “practically exactly” — not as an axiom, but as a consequence of how coarse their instruments are. (Incidentally, this is exactly how our own universe is searched for a “floor”: experiments hunting for Lorentz violation are among the most precise measurements humanity performs.)</p>
+<p><strong>What is already in hand:</strong> surprisingly much. Length contraction — objects flying through the automaton contract exactly by Einstein’s formula (to 0.5 %) — <em>is</em> a passive boost test; add to it relativistic speed saturation and the clock dilation from the gravity era, whose boost version is its natural twin. Missing: an active formulation (Doppler behaviour of a moving packet), more dimensions, and the link to local time.</p>
+<p><strong>Its value:</strong> high, but best in combination. On its own it continues the roundness test; together with fermions (rung 4) it would give “emergent special relativity with fermions” — which is no longer an experiment but a programme. Every boost result also directly sharpens the predictions for rung 1. Risk worth naming: it may produce a prediction that existing ultra-precise measurements <em>already exclude</em>. That too would be a verdict — a fast and honest one.</p>
+<p class="bilancia"><span>VALUE <b>high in combination with rung 4</b></span><span>COST <b>1D ~€0, 3D campaign ~US$1</b></span><span>RISK <b>may hit existing limits — which is also an answer</b></span></p>
+<h3 id="6--two-particles-from-one-world">6 · Two particles from one world</h3>
+<p><em>The project’s deepest debt — and its most honestly admitted gap.</em></p>
+<p>This is the first-hand answer to the question “emergence of particles?” — but to make sense of it you need the strangest feature of quantum mechanics. It isn’t randomness, and it isn’t the cat in the box. It’s <em>where the quantum wave lives</em>.</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Configuration space — the map of pairs</h4>
+<p>One particle on a line: its quantum wave lives on that line. Nothing odd so far. But two particles? Intuition says "two waves on the same line". Quantum mechanics says no: there is <em>one</em> wave, and it lives in the <strong>map of pairs</strong> — a plane whose horizontal axis is the position of the first particle and whose vertical axis is the position of the second. Every point of that plane is one possible <em>combination</em>: "the first is here AND the second is there".</p>
+<p>For three particles the map has six dimensions; for thirty particles, ninety. The quantum world doesn't play out on the stage of our space — it plays out in a vast space of all combinations. And that is where entanglement lives: a wave that cannot be factored into "the first one solo" times "the second one solo".</p>
+</aside>
+<figure>
+<svg viewBox="0 0 640 250" role="img" aria-label="Two particles on one line correspond to a single point in a plane whose axes are the two positions; the quantum wave lives in that plane, not on the line.">
+  <defs>
+    <marker id="ar3e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <text x="40" y="40" class="big">our space</text>
+  <g color="currentColor"><line x1="40" y1="130" x2="270" y2="130" class="w"></line></g>
+  <circle cx="105" cy="130" r="9" fill="var(--color-accent)"></circle>
+  <text x="105" y="160" text-anchor="middle" class="acc">particle 1</text>
+  <circle cx="210" cy="130" r="9" fill="var(--color-accent-2)"></circle>
+  <text x="210" y="160" text-anchor="middle" class="acc2">particle 2</text>
+  <g color="var(--color-muted)"><line x1="292" y1="130" x2="346" y2="130" class="wd" marker-end="url(#ar3e)"></line></g>
+  <text x="319" y="112" text-anchor="middle" class="dim">the same</text>
+  <text x="319" y="126" text-anchor="middle" class="dim">datum</text>
+  <text x="380" y="40" class="big">map of pairs</text>
+  <g color="currentColor">
+    <line x1="380" y1="210" x2="600" y2="210" class="w" marker-end="url(#ar3e)"></line>
+    <line x1="380" y1="210" x2="380" y2="55" class="w" marker-end="url(#ar3e)"></line>
+  </g>
+  <text x="596" y="230" text-anchor="end" class="dim">position of particle 1</text>
+  <text x="392" y="66" class="dim">position of particle 2</text>
+  <g color="var(--color-muted)">
+    <line x1="445" y1="210" x2="445" y2="118" class="wd"></line>
+    <line x1="380" y1="118" x2="445" y2="118" class="wd"></line>
+  </g>
+  <circle cx="445" cy="118" r="9" fill="var(--color-accent)"></circle>
+  <circle cx="445" cy="118" r="3.5" fill="var(--color-accent-2)"></circle>
+  <text x="462" y="112" class="dim">one point = one combination</text>
+  <text x="462" y="128" class="dim">"1 is here AND 2 is there"</text>
+</svg>
+<figcaption>The quantum wave of two particles does not live on a line but in the map of all pairs of positions. For 30 particles that map has 90 dimensions — and a classical field in ordinary space has nowhere to store it. That is the main argument for why quantum mechanics "cannot" be built from a classical substrate.</figcaption>
+</figure>
+<p><strong>Why it is open:</strong> all of DQC’s two-particle quantum results — entanglement, the Bell test, collapse — ran on a grid that was <em>declared by hand</em> to be the map of pairs. So the automaton <em>uses</em> the map of pairs, but nobody has yet shown it <em>growing</em> out of a single ordinary substrate. The journal records this honestly beside every result as an “open scientific debt”. (Incidentally: this is exactly where the famous “walking droplets” ran aground — oil droplets on a vibrating bath that mimic single-particle quantum behaviour but never managed the double slit or pairs.)</p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>The Bell test and the bound of 2 — why it is a milestone</h4>
+<p>Imagine two players who may agree on a strategy in advance but cannot communicate during the game. A referee asks each of them one of two questions independently, and they answer yes or no. In 1964 John Bell proved: however clever the pre-agreed strategy, a certain coordination score cannot exceed <span class="m">2</span>. Quantum entangled particles reach <span class="m">2√2 ≈ 2.83</span> — meaning their coordination <em>cannot be explained by any pre-agreed plan</em>. This is an experimentally verified fact (Nobel Prize 2022).</p>
+<p>The DQC automaton measured <span class="m">2.79 – 2.83</span> — a deterministic machine with no randomness anywhere crossed Bell's bound. The trick isn't cheating, it's geography: the guidance happens in the map of pairs, where "distant" events are neighbours. Honest caveats the project itself states: the loopholes of real laboratory tests cannot be addressed in simulation, and the spin part of the apparatus is implemented, not emergent.</p>
+</aside>
+<p><strong>How it would run:</strong> a pre-registered design already exists and awaits review. The null hypothesis is named in advance: the expected outcome for a classical field is so-called Hartree behaviour — two particles, each feeling only a smeared average of the other, no genuine entanglement. Success would mean measuring, in the joint dynamics of two objects on one substrate, something that cannot be factored into “two solo waves”.</p>
+<p><strong>Its value:</strong> two-sided, but asymmetric. If entanglement did emerge — even for just two particles — it would be a result of a different category from everything so far, because it would sidestep the main principled argument against this entire class of theories. The negative outcome is more likely, though — and it too is worth having: a sharp, measured theorem “a classical integer substrate yields Hartree, not entanglement” would precisely quantify <em>what extra</em> quantumness demands. The project has a tradition of such theorems, and they are its most durable results.</p>
+<p class="bilancia"><span>VALUE <b>scientifically deepest</b></span><span>COST <b>~€0, design ready</b></span><span>RISK <b>high — a positive result is unlikely</b></span></p>
+<h3 id="7--a-universe-that-weaves-itself">7 · A universe that weaves itself</h3>
+<p><em>The cosmological branch: expansion as the release of tokens. Beautiful, speculative — let it wait for the engine.</em></p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>Tokens — the world's unit of account</h4>
+<p>During the gravity era a remarkable ontology crystallised in the automaton (an ontology being an answer to "what the world <em>is made of</em>"). The basic substance is <strong>tokens</strong> — indivisible integer counters whose total number is conserved exactly, by construction. Then a trio of identifications: <em>bound</em> tokens = mass (already measured to 1 % — see Part II), <em>free</em> tokens = the ticking of time, and <em>space</em> = simply the places where tokens are. If that reminds you of physics' most famous equation, E = mc² ("mass is imprisoned energy"), it is no coincidence — that kinship is exactly what the project measures.</p>
+</aside>
+<p>Out of this ontology a cosmological story falls almost by itself: the <strong>Big Bang</strong> = a start from an ultra-dense phase where almost everything is bound; the <strong>expansion of the universe</strong> = the gradual release of tokens, literally <em>weaving new space</em>; <strong>gravity</strong> = local re-binding; and a <strong>black hole</strong> = a region where space has been un-woven. The journal records the story honestly as an <em>input assumption, not a result</em> — written down, not demonstrated. Supporting hints do exist: binding in the automaton spontaneously produces “freeze-out” — an object consumes its own source by binding, stiffens, and yet goes on binding its surroundings at a distance. Structurally that resembles a black hole (and the project adds, with discipline: resembles, not derived).</p>
+<p><strong>How it would run:</strong> a “drain” branch of the rule has been designed — a reversible modification in which the total of time decreases monotonically (an analogue of expansion) and the statics yield a relative version of the gravitational law. The series would test whether it produces an expansion history, horizons, perhaps an analogue of redshift.</p>
+<p><strong>Its value:</strong> narratively the strongest — cosmology is the bridge to a lay audience and it unifies two branches of the programme. Scientifically, though, it is the furthest from falsifiable contact with data, and so it belongs <em>after</em> rung 3: if an action principle is found, the drain branch may fall out of it naturally and save the whole hand-built construction. Building the cathedral before the engine would be lovely, but the other order makes more sense.</p>
+<p class="bilancia"><span>VALUE <b>medium; narratively high</b></span><span>COST <b>~€0, design in notes</b></span><span>RISK <b>speculative — best after rung 3</b></span></p>
+<h3 id="8--preprint-and-outside-eyes">8 · Preprint and outside eyes</h3>
+<p><em>Adds not one bit of new knowledge — and multiplies the value of every other rung.</em></p>
+<aside class="concept">
+<span class="concept-tag">Concept</span>
+<h4>arXiv, peer review and the timestamp</h4>
+<p><strong>arXiv</strong> is the public noticeboard where physicists have posted papers since 1991, before journal publication — each with an indelible timestamp that permanently proves who said what first. <strong>Peer review</strong> is adversarial scrutiny: independent experts try to tear the paper apart, and what survives may enter a journal. It is not a guarantee of truth — it is a filter that catches the author's blind spots. So far the project has published via Zenodo (a scientific archive issuing a DOI, a permanent identifier), which formally provides the timestamp, but the physics community doesn't read it.</p>
+</aside>
+<p><strong>Why this matters more than it seems — three reasons.</strong> First, rung 1 loses its point without a public timestamp: if Auger settles composition in a few years and the prediction survives, its value stands or falls on having been <em>demonstrably, publicly</em> staked in advance, somewhere the community actually looks. Second, outside eyes have already worked once — dramatically: the project’s nineteenth self-correction came from an external review that found a wrong factor in the headline number of prediction P2. A factor of two. In the main number. Found from outside. That is empirical proof that the project has blind spots visible only from outside — and a human referee will find more. Third, “candidate” status is also a social matter: without a single external review it remains an internal belief, however strict the gates.</p>
+<p><strong>Its value:</strong> a multiplier. The thresholds the project set itself for publishing (“at least one major no-go survived” + “at least one falsifiable prediction”) have been met since the first wave closed — so by its own rules, it is time. The cost is specific: not money, but months of the author’s time on revisions and referee replies — and the willingness to take hard criticism. The prior-art review has been done honestly (all relevant predecessors acknowledged and distinguished), so the scrutiny won’t be walked into blind.</p>
+<p class="bilancia"><span>VALUE <b>multiplies everything else</b></span><span>COST <b>€0 — but months of human time</b></span><span>RISK <b>hard criticism; that is part of the product</b></span></p>
+<h2 id="part-iv--the-map-the-order-and-an-honest-ending">Part IV — The map, the order, and an honest ending</h2>
+<p>The rungs are not independent — some hand their results to others. Here is how they fit together:</p>
+<figure>
+<svg viewBox="0 0 720 560" role="img" aria-label="Dependency map: fermions and boosts sharpen the P2 paper, which Auger decides; the action principle unblocks the gravity loop and then cosmology; the refraction rerun and the two-particle test are independent; the preprint on arXiv multiplies everything.">
+  <defs>
+    <marker id="ar4e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
+    </marker>
+  </defs>
+  <text x="40" y="34" class="dim">TRACK: LAWS OF MOTION AND PARTICLES</text>
+  <text x="400" y="34" class="dim">TRACK: GRAVITY AND COSMOS</text>
+  <rect x="40" y="52" width="280" height="48" class="bx"></rect>
+  <text x="180" y="75" text-anchor="middle" class="big">4 · Fermions (doubling theorem)</text>
+  <text x="180" y="92" text-anchor="middle" class="dim">Dirac sector, emergent spin</text>
+  <g color="currentColor"><line x1="180" y1="100" x2="180" y2="126" class="w" marker-end="url(#ar4e)"></line></g>
+  <text x="192" y="118" class="dim">supplies apparatus</text>
+  <rect x="40" y="128" width="280" height="48" class="bx"></rect>
+  <text x="180" y="151" text-anchor="middle" class="big">5 · Boosts (full relativity)</text>
+  <text x="180" y="168" text-anchor="middle" class="dim">motion vs. lattice unmeasurable</text>
+  <g color="currentColor"><line x1="180" y1="176" x2="180" y2="202" class="w" marker-end="url(#ar4e)"></line></g>
+  <text x="192" y="194" class="dim">sharpens predictions</text>
+  <rect x="40" y="204" width="280" height="48" class="bxa"></rect>
+  <text x="180" y="227" text-anchor="middle" class="big acc">1 · The P2 prediction paper</text>
+  <text x="180" y="244" text-anchor="middle" class="acc">timestamped on arXiv</text>
+  <g color="var(--color-accent-2)"><line x1="180" y1="252" x2="180" y2="278" class="ws" marker-end="url(#ar4e)"></line></g>
+  <text x="192" y="270" class="acc2">data decides (years)</text>
+  <rect x="40" y="280" width="280" height="48" class="bxd"></rect>
+  <text x="180" y="303" text-anchor="middle" class="big">Auger Observatory</text>
+  <text x="180" y="320" text-anchor="middle" class="dim">outside referee — ray composition</text>
+  <rect x="40" y="366" width="280" height="48" class="bx"></rect>
+  <text x="180" y="389" text-anchor="middle" class="big">6 · Two particles from one world</text>
+  <text x="180" y="406" text-anchor="middle" class="dim">independent, deepest, riskiest</text>
+  <rect x="400" y="52" width="280" height="48" class="bx"></rect>
+  <text x="540" y="75" text-anchor="middle" class="big">3 · Action principle</text>
+  <text x="540" y="92" text-anchor="middle" class="dim">theory work — finding the engine</text>
+  <g color="currentColor"><line x1="540" y1="100" x2="540" y2="126" class="w" marker-end="url(#ar4e)"></line></g>
+  <text x="552" y="118" class="dim">supplies Noether</text>
+  <rect x="400" y="128" width="280" height="48" class="bx"></rect>
+  <text x="540" y="151" text-anchor="middle" class="big">Gravity loop without pumping</text>
+  <text x="540" y="168" text-anchor="middle" class="dim">3 stuck gates at once</text>
+  <g color="currentColor"><line x1="540" y1="176" x2="540" y2="202" class="w" marker-end="url(#ar4e)"></line></g>
+  <text x="552" y="194" class="dim">may fall out by itself</text>
+  <rect x="400" y="204" width="280" height="48" class="bx"></rect>
+  <text x="540" y="227" text-anchor="middle" class="big">7 · Cosmology ("weaving")</text>
+  <text x="540" y="244" text-anchor="middle" class="dim">expansion, horizons, black holes</text>
+  <rect x="400" y="366" width="280" height="48" class="bx"></rect>
+  <text x="540" y="389" text-anchor="middle" class="big">2 · Finish the refraction</text>
+  <text x="540" y="406" text-anchor="middle" class="dim">independent quick win — one day</text>
+  <g color="var(--color-muted)">
+    <line x1="180" y1="414" x2="180" y2="470" class="wd" marker-end="url(#ar4e)"></line>
+    <line x1="540" y1="414" x2="540" y2="470" class="wd" marker-end="url(#ar4e)"></line>
+  </g>
+  <rect x="40" y="472" width="640" height="54" class="bxa"></rect>
+  <text x="360" y="495" text-anchor="middle" class="big acc">8 · Preprint + arXiv + peer review</text>
+  <text x="360" y="514" text-anchor="middle" class="acc">multiplier: every result above gains a timestamp and outside eyes</text>
+</svg>
+<figcaption>The dependency map. Solid arrows = one step directly strengthens another; dashed = a looser link. The teal arrow leads out of the project — to its one external referee. Rungs 2 and 6 stand alone: they can be done at any time, without waiting for the others.</figcaption>
+</figure>
+<div class="tablewrap">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>#</th><th>Rung</th><th>What it delivers</th><th>Cost</th><th>Risk</th></tr></thead><tbody><tr><td>1</td><td><strong>The P2 paper</strong></td><td>external falsifiability — an experiment decides, not the author</td><td>~€0</td><td>small</td></tr><tr><td>2</td><td><strong>Finish the refraction</strong></td><td>a sure gain: quantitative closure of the gravity chapter</td><td>1 day</td><td>lowest</td></tr><tr><td>3</td><td><strong>Action principle</strong></td><td>gravity’s engine — 3 gates at once, or a new theorem</td><td>weeks of thought</td><td>time only</td></tr><tr><td>4</td><td><strong>Fermions</strong></td><td>a shot at “second no-go survived” + emergent spin</td><td>days of design</td><td>medium</td></tr><tr><td>5</td><td><strong>Boosts</strong></td><td>bridge from roundness to full relativity; sharpens P2</td><td>~US$1</td><td>may hit existing limits</td></tr><tr><td>6</td><td><strong>Two particles</strong></td><td>an answer to the deepest question — valuable either way</td><td>~€0</td><td>high</td></tr><tr><td>7</td><td><strong>Cosmology</strong></td><td>the unifying story — best once #3 supplies the engine</td><td>~€0</td><td>speculative</td></tr><tr><td>8</td><td><strong>Peer review</strong></td><td>multiplies the value of everything above</td><td>months of time</td><td>hard criticism</td></tr></tbody></table>
+</div>
+<div class="finale">
+<h3>And what about "proving the universe IS an automaton"?</h3>
+<p>Now, honestly — because honesty is a working tool in this project, not an ornament. That claim <strong>cannot be proved</strong>. No simulation, however faithful, can demonstrate from inside itself that the world outside the window runs on the same machine. Science doesn't make such claims anyway: it never proved that the universe "IS" curved spacetime either — only that the theory of curved spacetime has survived a century of attempts to refute it and predicted things nobody expected.</p>
+<p>That is exactly the game available here, and the ladder above is that programme in three moves: <strong>(a) survive the prohibitions</strong> — the mathematical theorems saying "a lattice cannot do this" — one after another (rungs 4 and 5); <strong>(b) reproduce ever more physics from ever fewer assumptions</strong> (rungs 3, 6, 7); and <strong>(c) predict where the automaton differs from a smooth universe, and let measurement decide</strong> (rungs 1 and 8).</p>
+<p>The project has forbidden itself the word "is" — which may be the best evidence of its culture. If that word is ever spoken, it won't be the author who says it. It will be a detector on the Argentine pampas.</p>
+</div>
+<p class="colophon">Compiled from the DQC project journal (state as of 21 August 2026). All figures quoted come from pre-registered runs with bit-exact rewinds; exploratory (non-citable) values are explicitly flagged in the text. The project has not yet been externally peer-reviewed — which is precisely rung 8.</p> </article> </section>  </main> <footer class="border-t border-black/5 mt-24"> <div class="max-w-5xl mx-auto px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted"> <p>© 2026 Daniel Marko. All rights reserved.</p> <div class="flex items-center gap-5"> <a href="mailto:dano.marko@gmail.com" class="hover:text-accent transition-colors">Email</a> <a href="https://www.linkedin.com/in/daniel-marko-1a185610" class="hover:text-accent transition-colors" rel="noopener" target="_blank">LinkedIn</a> <a href="https://github.com/danielis1975" class="hover:text-accent transition-colors" rel="noopener" target="_blank">GitHub</a> </div> </div> </footer> </body></html>
